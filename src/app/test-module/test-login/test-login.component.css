@@ -2,8 +2,10 @@
   width: 100%;
 }
 
-.shipping-card {
+.login-card {
   min-width: 120px;
+  max-width: 40%;
+  background-color: rgb(195, 195, 252);
   margin: 20px auto;
 }
 
