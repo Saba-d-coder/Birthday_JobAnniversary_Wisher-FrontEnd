@@ -4,9 +4,7 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
     }).compileComponents();
   });
 
@@ -16,16 +14,18 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'bday-jobAnniversary-wisher'`, () => {
+  it(`should have as title 'Just n Org'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('bday-jobAnniversary-wisher');
+    expect(app.title).toEqual('Just n Org');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('bday-jobAnniversary-wisher app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain(
+      'Bday n Job Anniversary Wisher Application is running!'
+    );
   });
 });

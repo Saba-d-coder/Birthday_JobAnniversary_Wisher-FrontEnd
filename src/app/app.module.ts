@@ -1,24 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
-import { TestModuleModule } from './test-module/test-module.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { SharedModule } from './shared-components/shared.module';
+import { WelcomeModule } from './components/welcome/welcome.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    TestModuleModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule,
     HttpClientModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
+    RouterModule.forRoot([
+      { path: 'welcome', component: WelcomeComponent },
+      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+      { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
+    ]),
+    WelcomeModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
