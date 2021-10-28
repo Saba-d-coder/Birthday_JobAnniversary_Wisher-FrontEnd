@@ -12,11 +12,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { NotificationTabComponent } from '../dashboard/notification-tab/notification-tab.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     WelcomeComponent,
@@ -34,12 +31,6 @@ import { MatCardModule } from '@angular/material/card';
     MatSidenavModule,
     MatListModule,
     FormsModule,
-    MatListModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatCardModule,
-    ReactiveFormsModule,
     RouterModule.forChild([
       { path: 'dashboard', component: DashboardComponent },
     ]),
