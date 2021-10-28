@@ -1,0 +1,12 @@
+ul {
+  list-style: none;
+  border: 2px solid plum;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  margin: 1em;
+  float: right;
+}

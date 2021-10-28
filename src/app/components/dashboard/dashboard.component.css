@@ -1,0 +1,30 @@
+.container {
+  margin-top: 2em;
+  border: 1px solid purple;
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+}
+
+/*  ========= Side Nav Styles ========== */
+.side-nav-container {
+  width: 100vw;
+}
+
+.sidenav {
+  width: 20%;
+}
+
+.sidenav-content {
+  width: 70%;
+}
+
+.btn {
+  border: 1px solid plum;
+  margin: 1em;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: rgb(241, 241, 241);
+}

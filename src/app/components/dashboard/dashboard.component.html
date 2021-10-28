@@ -1,2 +1,22 @@
 <app-header></app-header>
-<p>dashboard works!</p>
+
+<h1>{{title}}</h1>
+<div class="container">
+
+    <mat-sidenav-container class="side-nav-container">
+        <mat-sidenav mode="side" opened class="sidenav">
+            <mat-action-list>
+                <button mat-list-item (click)="index = 0"> Birthday </button>
+                <button mat-list-item (click)="index = 1"> Job Anniversary </button>
+                <div *ngIf="role=='admin'">
+                    <button mat-list-item (click)="index = 2"> Requests </button>
+                </div>
+                <button class="btn">Change Team</button>
+                <button class="btn">Leave Team</button>
+            </mat-action-list>
+        </mat-sidenav>
+        <mat-sidenav-content class="sidenav-content">
+            <app-notification-tab [(index)]=index></app-notification-tab>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

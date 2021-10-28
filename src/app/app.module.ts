@@ -6,7 +6,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './components/welcome/welcome.component';
-import { SharedModule } from './shared-components/shared.module';
 import { WelcomeModule } from './components/welcome/welcome.module';
 
 @NgModule({
