@@ -1,26 +1,15 @@
+#welcome-title {
+  text-align: center;
+  margin: 1em 0;
+}
+
 .login-signup {
   margin: auto;
-  width: 40%;
-  border: 2px solid plum;
-  height: 50vh;
+  width: 30%;
+  border: 2px solid rgb(38, 38, 139);
+  height: 60vh;
 }
 
-/* .example-small-box,
-.example-large-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 16px;
-  padding: 16px;
-  border-radius: 8px;
+.login-signup .mat-tab-labels {
+  text-align: center;
 }
-
-.example-small-box {
-  height: 100px;
-  width: 100px;
-}
-
-.example-large-box {
-  height: 300px;
-  width: 300px;
-} */
