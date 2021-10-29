@@ -1,8 +1,22 @@
-<div *ngIf="index==0; else tab2">
-    <p>Birthday Notfication goes here</p>
-</div>
+<mat-sidenav-container class="side-nav-container">
+    <mat-sidenav mode="side" opened class="sidenav">
+        <mat-action-list>
+            <button mat-list-item (click)="index = 0"> Birthday </button>
+            <button mat-list-item (click)="index = 1"> Job Anniversary </button>
+            <div *ngIf="role=='admin'">
+                <button mat-list-item (click)="index = 2"> Requests </button>
+            </div>
+            <button class="btn">Change Team</button>
+            <button class="btn">Leave Team</button>
+        </mat-action-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content">
+        <div *ngIf="index==0; else tab2">
+            <p>Birthday Notfication goes here</p>
+        </div>
 
-<ng-template #tab2>
-    <p>Job Anniversary Notfication goes here</p>
-
-</ng-template>
+        <ng-template #tab2>
+            <p>Job Anniversary Notfication goes here</p>
+        </ng-template>
+    </mat-sidenav-content>
+</mat-sidenav-container>

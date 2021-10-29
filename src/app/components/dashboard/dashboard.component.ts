@@ -7,8 +7,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   title = 'Dashboard';
-  role = 'user';
-  index: number = 0;
 
   constructor() {}
 
