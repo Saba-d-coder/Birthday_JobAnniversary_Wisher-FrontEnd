@@ -1,6 +1,35 @@
 <app-header></app-header>
 
-<h1>{{title}}</h1>
+<p id="dashboard-title">&nbsp; {{title}}</p>
+
 <div class="container">
-    <app-notification></app-notification>
+    <!-- #region side nav container-->
+    <mat-sidenav-container class="side-nav-container">
+        <!-- #region side nav options -->
+        <mat-sidenav mode="side" opened class="sidenav">
+            <p class="sidenav-title">&nbsp; Notifications</p>
+            <mat-divider></mat-divider>
+            <mat-action-list>
+                <button mat-list-item (click)="index = 0"> Birthdays </button>
+                <button mat-list-item (click)="index = 1"> Job Anniversaries</button>
+                <div *ngIf="admin">
+                    <button mat-list-item (click)="index = 2"> Requests </button>
+                </div>
+                <mat-divider></mat-divider>
+                <p class="sidenav-title">&nbsp; Team</p>
+                <mat-divider></mat-divider>
+
+                <button mat-list-item (click)="index = 3"> Team Details </button>
+                <button mat-list-item (click)="openDialog()"> Team Settings </button>
+
+            </mat-action-list>
+        </mat-sidenav>
+        <!-- #endregion -->
+        <!-- #region nav tab components -->
+        <mat-sidenav-content class="sidenav-content">
+            <app-notification-tab [(index)]=index></app-notification-tab>
+        </mat-sidenav-content>
+        <!-- #endregion -->
+    </mat-sidenav-container>
+    <!-- #endregion -->
 </div>

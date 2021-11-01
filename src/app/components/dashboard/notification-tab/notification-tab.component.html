@@ -1,4 +1,5 @@
-<mat-tab-group [(selectedIndex)]="index" class="header-less-tabs" animationDuration="0ms">
+<mat-tab-group [(selectedIndex)]="index" class="header-less-tabs" animationDuration="0ms" name='index'>
+    <!-- #region tab components -->
     <mat-tab>
         <app-notification [index]='index'></app-notification>
     </mat-tab>
@@ -8,4 +9,8 @@
     <mat-tab>
         <app-request-notification></app-request-notification>
     </mat-tab>
+    <mat-tab>
+        <app-team-details></app-team-details>
+    </mat-tab>
+    <!-- #endregion -->
 </mat-tab-group>

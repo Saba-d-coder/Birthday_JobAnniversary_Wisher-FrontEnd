@@ -6,13 +6,19 @@ import { SharedModule } from 'src/app/shared-components/shared.module';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { NotificationComponent } from '../dashboard/notification/notification.component';
-import { RequestNotificationComponent } from '../dashboard/request-notification/request-notification.component';
+import { NotificationComponent } from '../dashboard/notification-tab/notification/notification.component';
+import { RequestNotificationComponent } from '../dashboard/notification-tab/request-notification/request-notification.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { NotificationTabComponent } from '../dashboard/notification-tab/notification-tab.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TeamSettingsComponent } from '../team-settings/team-settings.component';
+import { HomepageComponent } from '../homepage/homepage.component';
+import { DashboardAccessGuard } from '../dashboard/dashboard-access.guard';
+import { HomepageAccessGuard } from '../homepage/homepage-access.guard';
+import { TeamDetailsComponent } from '../dashboard/notification-tab/team-details/team-details.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -20,19 +26,33 @@ import { FormsModule } from '@angular/forms';
     DashboardComponent,
     LoginComponent,
     SignupComponent,
+    NotificationTabComponent,
     NotificationComponent,
     RequestNotificationComponent,
-    NotificationTabComponent,
+    TeamSettingsComponent,
+    HomepageComponent,
+    TeamDetailsComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     MatTabsModule,
     MatSidenavModule,
+    MatProgressSpinnerModule,
     MatListModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
-      { path: 'dashboard', component: DashboardComponent },
+      {
+        path: 'home',
+        component: HomepageComponent,
+        canActivate: [HomepageAccessGuard],
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [DashboardAccessGuard],
+      },
     ]),
   ],
   exports: [CommonModule],

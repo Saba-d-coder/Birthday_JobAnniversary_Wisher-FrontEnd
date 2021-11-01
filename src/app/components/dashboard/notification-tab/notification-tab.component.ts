@@ -13,11 +13,7 @@ export class NotificationTabComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  get indexValue(): number {
-    return this.index;
-  }
-
-  set indexValue(value: number) {
+  indexValueChange(value: number) {
     this.index = value;
     this.indexChange.emit(this.index);
   }

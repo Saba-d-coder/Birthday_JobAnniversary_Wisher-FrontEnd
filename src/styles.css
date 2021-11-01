@@ -4,10 +4,51 @@
 
 html,
 body {
+  padding: 0;
   height: 100%;
 }
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* ==== Progress Spinner Styles==== */
+
+.spinner {
+  width: fit-content;
+  margin: auto;
+}
+
+.spinner .mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: crimson;
+}
+
+/* ==== Login/Signup Form Styles ==== */
+
+.auth-form {
+  padding: 1em;
+}
+
+.auth-form input {
+  height: 30px;
+  font-size: 15px;
+  width: 60%;
+}
+
+.auth-form button {
+  font-size: 16px;
+  padding: 3px;
+}
+
+.auth-form button:hover {
+  cursor: pointer;
+  background-color: rgb(252, 180, 204);
+  border: none;
 }

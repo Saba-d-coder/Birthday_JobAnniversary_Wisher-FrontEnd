@@ -1,7 +1,27 @@
 <nav>
     <ul>
-        <li style="float: left;"><a href="welcome">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Team</a></li>
+        <li style="float: left;"><a href="home">&nbsp; JustnOrg</a></li>
+        <li>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>account_circle</mat-icon> &nbsp;
+            </button>
+
+            <!-- #region menu items -->
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                    <mat-icon>account_box</mat-icon>
+                    <span>My Profile</span>
+                </button>
+                <button mat-menu-item [disabled]='disabledDashboard' (click)="itemClicked('dashboard')">
+                    <mat-icon>dashboard_icon</mat-icon>
+                    <span>Dashboard</span>
+                </button>
+                <button mat-menu-item (click)="logout()">
+                    <mat-icon>logout</mat-icon>
+                    <span>Logout</span>
+                </button>
+            </mat-menu>
+            <!-- #endregion -->
+        </li>
     </ul>
 </nav>

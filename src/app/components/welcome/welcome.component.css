@@ -1,15 +1,25 @@
+.welcome-container {
+  background-image: url("../../../assets/images/bday3.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+
+.app-details {
+  width: 30%;
+}
+
 #welcome-title {
-  text-align: center;
-  margin: 1em 0;
+  font-weight: bold;
 }
 
 .login-signup {
-  margin: auto;
   width: 30%;
-  border: 2px solid rgb(38, 38, 139);
-  height: 60vh;
-}
-
-.login-signup .mat-tab-labels {
-  text-align: center;
+  height: 60%;
+  background-color: rgb(250, 235, 211);
+  border-radius: 3px;
 }

@@ -1,19 +1,38 @@
-<div>
-    <h1 id="welcome-title">Welcome to JustnOrg!</h1>
+<div *ngIf='loading; else welcome' class="spinner">
+    <mat-spinner></mat-spinner>
+</div>
+<ng-template #welcome>
 
-    <div class="login-signup">
-        <mat-tab-group mat-stretch-tabs>
-            <mat-tab label="Sign In" id="login">
-                <div>
-                    <app-login></app-login>
-                </div>
-            </mat-tab>
-            <mat-tab label="Sign Up" id="signup">
-                <div>
-                    <app-signup></app-signup>
-                </div>
-            </mat-tab>
-        </mat-tab-group>
+    <div class="welcome-container">
+        <div class="app-details">
+            <h1 id="welcome-title">Welcome to JustnOrg!</h1>
+            <p id="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, facilis hic illum sequi nihil
+                nulla
+                quod
+                atque omnis possimus vero iure accusantium consectetur, tempore qui minus. Vero, cupiditate magni.
+                Animi!
+            </p>
+        </div>
+
+        <div class="login-signup">
+            <mat-tab-group mat-stretch-tabs>
+                <!-- #region signin -->
+                <mat-tab label="Sign In" id="signin">
+                    <ng-template matTabContent>
+                        <app-login></app-login>
+                    </ng-template>
+                </mat-tab>
+                <!-- #endregion -->
+
+                <!-- #region signup -->
+                <mat-tab label="Sign Up" id="signup">
+                    <ng-template matTabContent>
+                        <app-signup></app-signup>
+                    </ng-template>>
+                </mat-tab>
+                <!-- #endregion -->
+            </mat-tab-group>
+        </div>
     </div>
 
-</div>
+</ng-template>

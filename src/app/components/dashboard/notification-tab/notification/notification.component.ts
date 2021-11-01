@@ -6,10 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./notification.component.css'],
 })
 export class NotificationComponent implements OnInit {
-  index: number = 0;
-  role = 'admin';
-
-  // @Input() index: number = 0;
+  @Input() index: number = 0;
   constructor() {}
   ngOnInit(): void {}
 }

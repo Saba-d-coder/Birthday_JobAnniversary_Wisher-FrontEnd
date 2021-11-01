@@ -1,12 +1,26 @@
 ul {
   list-style: none;
-  border: 2px solid plum;
-  margin: 0;
-  padding: 0;
+  background-color: rgb(250, 170, 170);
   overflow: hidden;
+  font-size: 20px;
+  padding: 0.5em 0 0 0;
 }
 
 li {
-  margin: 1em;
   float: right;
+}
+
+.mat-menu-trigger {
+  background-color: inherit;
+  border: none;
+}
+
+.mat-icon {
+  font-size: 30px;
+  /* vertical-align: 2px; */
+}
+
+.mat-icon:hover {
+  cursor: pointer;
+  color: rgb(233, 90, 121);
 }

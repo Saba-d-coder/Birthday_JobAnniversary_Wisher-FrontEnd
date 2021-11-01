@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -6,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome.component.css'],
 })
 export class WelcomeComponent implements OnInit {
-  constructor() {}
+  loading: boolean;
+
+  constructor(private router: Router) {
+    this.loading = this.router.getCurrentNavigation()?.extras.state?.loading;
+    setTimeout(() => (this.loading = false), 1000);
+  }
 
   ngOnInit(): void {}
 }
