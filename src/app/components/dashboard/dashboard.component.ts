@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from 'src/app/services/user.service';
-import { TeamSettingsComponent } from '../team-settings/team-settings.component';
+import { TeamSettingsComponent } from './notification-tab/team-settings/team-settings.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +11,7 @@ import { TeamSettingsComponent } from '../team-settings/team-settings.component'
 export class DashboardComponent implements OnInit {
   title = 'Dashboard';
   admin: boolean = false;
+  inTeam: boolean = false;
   index: number = 0;
 
   constructor(private userService: UserService, public dialog: MatDialog) {}
@@ -18,7 +19,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     // getting user's role
     this.admin = this.userService.isAdmin();
-    // console.log(this.userService.authToken);
+    this.inTeam = this.userService.inTeam();
   }
 
   openDialog() {
@@ -26,7 +27,7 @@ export class DashboardComponent implements OnInit {
       height: '400px',
       width: '600px',
       data: {
-        team: 'DevOps',
+        team: 'Dev Team',
       },
     });
   }

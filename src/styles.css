@@ -47,7 +47,11 @@ a {
   padding: 3px;
 }
 
-.auth-form button:hover {
+.auth-form button:disabled {
+  cursor: not-allowed;
+}
+
+.auth-form button:enabled:hover {
   cursor: pointer;
   background-color: rgb(252, 180, 204);
   border: none;

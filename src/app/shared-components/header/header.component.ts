@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
     this.sub = this.userService.logout().subscribe({
       next: (response: any) => {
         this.openSnackBar('Log out successful');
-        this.userService.loggedIn();
+        this.userService.isLoggedIn = false;
         this.router
           .navigate(['/welcome'], {
             state: { loading: true },

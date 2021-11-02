@@ -1,29 +1,30 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AdminService } from 'src/app/services/admin.service';
 import { TeamService } from 'src/app/services/team.service';
 
 @Component({
-  selector: 'app-notification',
-  templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.css'],
+  selector: 'app-admin-requests',
+  templateUrl: './admin-requests.component.html',
+  styleUrls: ['./admin-requests.component.css'],
 })
-export class NotificationComponent implements OnInit {
-  @Input() index: number = 0;
+export class AdminRequestsComponent implements OnInit {
   sub!: Subscription | undefined;
 
   constructor(
     private router: Router,
-    private teamService: TeamService,
+    private adminService: AdminService,
     private _snackBar: MatSnackBar
   ) {}
+
   ngOnInit(): void {
-    this.getTeamUpcomingEvents();
+    this.getAllRequests();
   }
 
-  getTeamUpcomingEvents() {
-    this.sub = this.teamService.getUpcomingEvents().subscribe({
+  getAllRequests() {
+    this.sub = this.adminService.getAllRequests().subscribe({
       next: (response: any) => {
         if (response.status == 'success') {
           console.log(response.data);

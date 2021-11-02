@@ -1,0 +1,40 @@
+<div class="user-info">
+    <h1>Please fill the details</h1>
+    <div class="info-form">
+        <form [formGroup]="userData" (ngSubmit)="submit()" ngNativeValidate>
+
+            <label> Birth Date* </label>
+            <br>
+            <input type="date" name="birthday" value="dd-mm-yyyy" formControlName="birthday"
+                [min]="minDate| date:'yyyy-MM-dd'" [max]="maxBirthDate| date:'yyyy-MM-dd'" required>
+            <br><br>
+
+            <label> Hire Date* </label>
+            <br>
+            <input type="date" name="hireDate" value="dd-mm-yyyy" formControlName="hireDate"
+                [min]="minDate| date:'yyyy-MM-dd'" [max]="maxHireDate| date:'yyyy-MM-dd'" required>
+            <br><br>
+
+            <label> Gender </label>
+            <br>
+            <input type="radio" name="gender" formControlName="gender"> Male
+            <input type="radio" name="gender" formControlName="gender"> Female
+            <input type="radio" name="gender" formControlName="gender"> Other
+            <br><br>
+
+            <label> Address </label>
+            <br>
+            <textarea placeholder="Type your address here" formControlName="address" name="address" rows="5"
+                cols="50"></textarea>
+            <br><br>
+
+            <label> Phone Number (+91) </label>
+            <br>
+            <input type="tel" placeholder="e.g. 9876543210" formControlName="contact" name="phone" minlength="10"
+                pattern="^[0-9]{10}$" />
+            <br><br>
+            <button color="primary" type="submit">Submit</button>
+            <br>
+        </form>
+    </div>
+</div>

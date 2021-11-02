@@ -12,7 +12,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
   sub!: Subscription | undefined;
-  loading: boolean = false;
 
   userAuth = this.formBuilder.group({
     username: null,
@@ -29,22 +28,18 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   submit(): void {
-    this.loading = true;
-
     this.sub = this.userService.login(this.userAuth.value).subscribe({
       next: (response: any) => {
         if (response.status == 'success') {
-          console.log(response.data);
           this.userService.authToken = response.data;
           this.openSnackBar(response.message);
 
-          // setting loggedIn true for guard on homepage
-          this.userService.loggedIn();
-          this.router.navigate(['/home'], { replaceUrl: true });
+          this.userService.isLoggedIn = true;
+          this.router.navigate(['/dashboard'], { replaceUrl: true });
+          // .then(() => window.location.replace('/dashboard'));
         } else {
           this.openSnackBar(response.message);
         }
-        this.loading = false;
       },
       error: (err) => this.openSnackBar(err.error.message),
     });

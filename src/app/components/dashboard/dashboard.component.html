@@ -7,21 +7,25 @@
     <mat-sidenav-container class="side-nav-container">
         <!-- #region side nav options -->
         <mat-sidenav mode="side" opened class="sidenav">
-            <p class="sidenav-title">&nbsp; Notifications</p>
-            <mat-divider></mat-divider>
             <mat-action-list>
-                <button mat-list-item (click)="index = 0"> Birthdays </button>
-                <button mat-list-item (click)="index = 1"> Job Anniversaries</button>
-                <div *ngIf="admin">
-                    <button mat-list-item (click)="index = 2"> Requests </button>
+                <div *ngIf="inTeam">
+                    <p class="sidenav-title">&nbsp; Notifications</p>
+                    <mat-divider></mat-divider>
+                    <button mat-list-item (click)="index = 0"> Birthdays </button>
+                    <button mat-list-item (click)="index = 1"> Job Anniversaries</button>
+                    <div *ngIf="admin">
+                        <button mat-list-item (click)="index = 2"> Requests </button>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <p class="sidenav-title">&nbsp; Team</p>
+                    <mat-divider></mat-divider>
+
+                    <button mat-list-item (click)="index = 3"> Team Details </button>
+                    <button mat-list-item (click)="openDialog()"> Team Settings </button>
                 </div>
+                <p class="sidenav-title">&nbsp; Your Account</p>
                 <mat-divider></mat-divider>
-                <p class="sidenav-title">&nbsp; Team</p>
-                <mat-divider></mat-divider>
-
-                <button mat-list-item (click)="index = 3"> Team Details </button>
-                <button mat-list-item (click)="openDialog()"> Team Settings </button>
-
+                <button mat-list-item (click)="index = 4"> Sent Requests </button>
             </mat-action-list>
         </mat-sidenav>
         <!-- #endregion -->

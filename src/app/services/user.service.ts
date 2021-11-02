@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Form } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -12,13 +13,10 @@ export class UserService {
   // to check if user is logged in
   isLoggedIn: boolean = false;
   authToken: string = '';
+  userID: number = 100003;
 
   login(data: FormData): Observable<any> {
     return this.http.post('/api/login', data);
-  }
-
-  loggedIn(): void {
-    this.isLoggedIn = !this.isLoggedIn;
   }
 
   setAuthToken(token: string) {
@@ -29,8 +27,27 @@ export class UserService {
     return this.http.post('/api/signup', data);
   }
 
+  getUserDetails(): Observable<any> {
+    // endpoint: string = '/api/users/' + this.userID;;
+
+    console.log('/api/users/' + this.userID);
+
+    return this.http
+      .get('/api/users/' + this.userID, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.authToken,
+        }),
+      })
+      .pipe(
+        map((response: any) => {
+          console.log(response.data);
+          return response.data;
+        })
+      );
+  }
+
   logout() {
-    return this.http.post('/api/logout', this.authToken, {
+    return this.http.post('/api/logout', {
       headers: new HttpHeaders({ Authorization: 'Bearer ' + this.authToken }),
     });
   }

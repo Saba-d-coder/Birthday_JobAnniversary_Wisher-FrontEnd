@@ -1,7 +1,9 @@
 <div class="auth-form">
     <form [formGroup]="userAuth" (ngSubmit)="submit()" ngNativeValidate>
-        <input type='text' placeholder="Username" formControlName="username" name="userName" required /> <br><br>
-        <input type='password' placeholder="Password" formControlName="password" name="password" required /> <br><br>
+        <input type='text' placeholder="Username" formControlName="username" name="userName" required minlength="3" />
+        <br><br>
+        <input type='password' placeholder="Password" formControlName="password" name="password" required
+            minlength="6" /> <br><br>
         <button color="primary" type="submit">Submit</button>
         <br>
     </form>

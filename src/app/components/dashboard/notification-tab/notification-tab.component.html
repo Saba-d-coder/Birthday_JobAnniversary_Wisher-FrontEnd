@@ -1,16 +1,31 @@
 <mat-tab-group [(selectedIndex)]="index" class="header-less-tabs" animationDuration="0ms" name='index'>
     <!-- #region tab components -->
     <mat-tab>
-        <app-notification [index]='index'></app-notification>
+        <ng-template matTabContent>
+            <app-notification [index]='index'></app-notification>
+        </ng-template>
     </mat-tab>
     <mat-tab>
-        <app-notification [index]='index'></app-notification>
+        <ng-template matTabContent>
+            <app-notification [index]='index'></app-notification>
+        </ng-template>
     </mat-tab>
     <mat-tab>
-        <app-request-notification></app-request-notification>
+        <ng-template matTabContent>
+            <app-admin-requests></app-admin-requests>
+        </ng-template>
     </mat-tab>
     <mat-tab>
-        <app-team-details></app-team-details>
+        <ng-template matTabContent>
+            <app-team-details></app-team-details>
+        </ng-template>
+
+    </mat-tab>
+    <mat-tab>
+        <ng-template matTabContent>
+            <app-user-requests></app-user-requests>
+        </ng-template>
+
     </mat-tab>
     <!-- #endregion -->
 </mat-tab-group>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,6 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignupComponent implements OnInit {
   sub!: Subscription | undefined;
-  loading: boolean = false;
 
   userData = this.formBuilder.group({
     username: null,
@@ -32,8 +31,6 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {}
 
   submit(): void {
-    this.loading = true;
-
     this.sub = this.userService.signup(this.userData.value).subscribe({
       next: (response: any) => {
         if (response.status == 'success') {
@@ -41,13 +38,11 @@ export class SignupComponent implements OnInit {
           this.userService.authToken = response.data['authToken'];
           this.openSnackBar(response.message);
 
-          // setting loggedIn true for guard on homepage
-          this.userService.loggedIn();
-          this.router.navigate(['/home'], { replaceUrl: true });
+          this.userService.isLoggedIn = true;
+          this.router.navigate(['/form']);
         } else {
           this.openSnackBar(response.message);
         }
-        this.loading = false;
       },
       error: (err) => this.openSnackBar(err.error.message),
     });

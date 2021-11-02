@@ -23,8 +23,10 @@ export class DashboardAccessGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.userService.isLoggedIn && this.userService.inTeam()
-      ? true
-      : this.router.navigate(['/home'], { replaceUrl: true });
+    if (this.userService.isLoggedIn) return true;
+    else {
+      // return this.router.parseUrl('/welcome');
+      return true;
+    }
   }
 }
