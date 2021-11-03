@@ -11,7 +11,7 @@
     <ng-template matTabContent>
       <app-event-notification
         [index]="index"
-        (eventsLength)="emitToSideNav($event)"
+        (eventsLength)="emitEventLengthsToSideNav($event)"
       ></app-event-notification>
     </ng-template>
   </mat-tab>
@@ -19,13 +19,15 @@
     <ng-template matTabContent>
       <app-event-notification
         [index]="index"
-        (eventsLength)="emitToSideNav($event)"
+        (eventsLength)="emitEventLengthsToSideNav($event)"
       ></app-event-notification>
     </ng-template>
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-admin-requests></app-admin-requests>
+      <app-admin-requests
+        (requestsLength)="emitAdminRequestsLengthToSideNav($event)"
+      ></app-admin-requests>
     </ng-template>
   </mat-tab>
   <mat-tab>

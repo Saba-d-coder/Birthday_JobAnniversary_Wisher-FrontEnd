@@ -15,13 +15,15 @@
           <mat-divider></mat-divider>
 
           <button mat-list-item (click)="index = 0">
-            Birthdays ({{ eventCounts.get("bdayEvents") }})
+            Birthdays ({{ eventCounts?.get("bdayEvents") }})
           </button>
           <button mat-list-item (click)="index = 1">
-            Job Anniversaries ({{ eventCounts.get("anniversaryEvents") }})
+            Job Anniversaries ({{ eventCounts?.get("anniversaryEvents") }})
           </button>
           <div *ngIf="admin">
-            <button mat-list-item (click)="index = 2">Requests</button>
+            <button mat-list-item (click)="index = 2">
+              Requests ({{ requestCount }})
+            </button>
           </div>
 
           <mat-divider></mat-divider>

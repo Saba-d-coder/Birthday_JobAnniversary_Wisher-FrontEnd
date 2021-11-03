@@ -23,7 +23,12 @@ export class NotificationTabComponent implements OnInit {
   }
 
   // this method is called when event-notification component emits the event
-  emitToSideNav(data: any) {
+  emitEventLengthsToSideNav(data: any) {
     this.eventsLengthRetrieved.emit(data);
+  }
+
+  // this method is called when admin-requests component emits the event
+  emitAdminRequestsLengthToSideNav(data: number) {
+    this.requestsLengthRetrieved.emit(data);
   }
 }

@@ -12,18 +12,11 @@ export class AdminService {
   teamID: number = 100;
 
   getAllRequests() {
-    return this.http
-      .get('/api/admin/requests', {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + this.userService.authToken,
-        }),
-      })
-      .pipe(
-        map((response: any) => {
-          console.log(response.data);
-          return response.data;
-        })
-      );
+    return this.http.get('/api/admin/requests', {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.userService.authToken,
+      }),
+    });
   }
 
   getAllPendingRequests() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -14,6 +14,9 @@ export class AdminRequestsComponent implements OnInit {
   sub!: Subscription | undefined;
 
   requests: any[] = [];
+
+  // this event emitter emits counts of events to notification-tab component
+  @Output() requestsLength = new EventEmitter();
 
   constructor(
     private router: Router,
@@ -31,6 +34,8 @@ export class AdminRequestsComponent implements OnInit {
         if (response.status == 'success') {
           this.requests = response.data;
           console.log(this.requests);
+
+          this.requestsLength.emit(this.requests.length);
         } else {
           // this.openSnackBar(response.message);
         }

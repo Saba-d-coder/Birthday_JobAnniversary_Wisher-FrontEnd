@@ -32,6 +32,7 @@ export class DashboardComponent implements OnInit {
     this.eventCounts = data;
   }
 
+  // this method is called when notification-tab component emits the event
   setRequestCount(data: any) {
     this.requestCount = data;
   }
