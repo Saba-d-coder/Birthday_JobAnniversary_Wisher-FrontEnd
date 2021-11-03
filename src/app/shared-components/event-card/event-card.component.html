@@ -1,0 +1,23 @@
+<mat-card class="event-card">
+    <mat-card-title-group>
+        <mat-card-title>
+            <p>{{notification.first_name}} {{notification.last_name}}</p>
+        </mat-card-title>
+        <mat-card-subtitle>
+            <p>{{notification.email}}</p>
+
+        </mat-card-subtitle>
+
+        <div *ngIf='notification.status=="SENT" else sendWish'>
+            <button class="mat-btn" disabled> Wish Sent</button>
+        </div>
+        <ng-template #sendWish>
+            <button class="mat-btn"> Send Wish </button>
+        </ng-template>
+
+    </mat-card-title-group>
+    <mat-card-content>
+        <p *ngIf='birthday'>Birth Day: {{notification.birth_date | date}}</p>
+        <p *ngIf='anniversary'>Job Anniversary: {{notification.hire_date |date}}</p>
+    </mat-card-content>
+</mat-card>

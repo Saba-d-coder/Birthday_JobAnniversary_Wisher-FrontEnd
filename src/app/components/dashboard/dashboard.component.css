@@ -12,6 +12,7 @@
 /*  ========= Side Nav Styles ========== */
 .side-nav-container {
   height: 100%;
+  width: 100%;
 }
 
 .sidenav {
@@ -29,6 +30,6 @@
   background-color: rgb(250, 170, 170);
 }
 
-.sidenav-content {
+/* .sidenav-content {
   width: 70%;
-}
+} */

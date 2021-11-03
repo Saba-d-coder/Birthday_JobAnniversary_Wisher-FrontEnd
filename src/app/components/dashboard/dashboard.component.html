@@ -8,30 +8,41 @@
         <!-- #region side nav options -->
         <mat-sidenav mode="side" opened class="sidenav">
             <mat-action-list>
+                <!-- #region Team related notifications -->
+                <!-- show notifications and team options only when user is in a team -->
                 <div *ngIf="inTeam">
+
                     <p class="sidenav-title">&nbsp; Notifications</p>
                     <mat-divider></mat-divider>
-                    <button mat-list-item (click)="index = 0"> Birthdays </button>
-                    <button mat-list-item (click)="index = 1"> Job Anniversaries</button>
+
+                    <button mat-list-item (click)="index = 0"> Birthdays ({{eventCounts.get('bdayEvents')}})</button>
+                    <button mat-list-item (click)="index = 1"> Job Anniversaries
+                        ({{eventCounts.get('anniversaryEvents')}})</button>
                     <div *ngIf="admin">
                         <button mat-list-item (click)="index = 2"> Requests </button>
                     </div>
+
                     <mat-divider></mat-divider>
+
                     <p class="sidenav-title">&nbsp; Team</p>
                     <mat-divider></mat-divider>
 
                     <button mat-list-item (click)="index = 3"> Team Details </button>
                     <button mat-list-item (click)="openDialog()"> Team Settings </button>
                 </div>
+                <!-- #endregion -->
+
                 <p class="sidenav-title">&nbsp; Your Account</p>
                 <mat-divider></mat-divider>
+
                 <button mat-list-item (click)="index = 4"> Sent Requests </button>
             </mat-action-list>
         </mat-sidenav>
         <!-- #endregion -->
         <!-- #region nav tab components -->
         <mat-sidenav-content class="sidenav-content">
-            <app-notification-tab [(index)]=index></app-notification-tab>
+            <!-- keeping track of changed index when selecting side nav options -->
+            <app-notification-tab [(index)]=index (eventsLengthRetrieved)='setCount($event)'></app-notification-tab>
         </mat-sidenav-content>
         <!-- #endregion -->
     </mat-sidenav-container>

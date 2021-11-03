@@ -30,6 +30,23 @@ a {
   stroke: crimson;
 }
 
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: crimson;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 3px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: crimson;
+  border-radius: 10px;
+}
+
 /* ==== Login/Signup Form Styles ==== */
 
 .auth-form {

@@ -1,3 +1,8 @@
 ::ng-deep .mat-tab-list {
   display: none;
 }
+
+.mat-tab-group {
+  margin: 0 1em;
+  height: 100%;
+}

@@ -33,6 +33,7 @@ export class SignupComponent implements OnInit {
   submit(): void {
     this.sub = this.userService.signup(this.userData.value).subscribe({
       next: (response: any) => {
+        console.log(response);
         if (response.status == 'success') {
           console.log(response.data);
           this.userService.authToken = response.data['authToken'];

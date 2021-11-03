@@ -20,7 +20,7 @@ export class PersonalInfoFormComponent implements OnInit {
   maxHireDate = new Date();
 
   userData = this.formBuilder.group({
-    birthday: null,
+    birthDate: null,
     hireDate: null,
     gender: null,
     address: null,

@@ -1,13 +1,15 @@
 <mat-tab-group [(selectedIndex)]="index" class="header-less-tabs" animationDuration="0ms" name='index'>
     <!-- #region tab components -->
     <mat-tab>
+        <!-- sending index to only app-notification coz same component is used for both birthday and anniversary, 
+            hence index is used to differentiate between them -->
         <ng-template matTabContent>
-            <app-notification [index]='index'></app-notification>
+            <app-event-notification [index]='index' (eventsLength)='emitToSideNav($event)'></app-event-notification>
         </ng-template>
     </mat-tab>
     <mat-tab>
         <ng-template matTabContent>
-            <app-notification [index]='index'></app-notification>
+            <app-event-notification [index]='index' (eventsLength)='emitToSideNav($event)'></app-event-notification>
         </ng-template>
     </mat-tab>
     <mat-tab>

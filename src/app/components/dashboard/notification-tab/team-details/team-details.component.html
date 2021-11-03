@@ -1,1 +1,33 @@
-<p>team-details goes here</p>
+<div *ngIf='loading else showDetails' class="spinner">
+    <mat-spinner></mat-spinner>
+</div>
+
+<ng-template #showDetails>
+    <div *ngIf='!error else showError'>
+        <h2>Team Name: {{teamName}}</h2>
+        <p>{{teamDesc}}</p>
+        <hr>
+        <h3>Team Members</h3>
+        <div *ngFor="let member of teamMembers" class="team-members">
+            <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{member.username}}
+                        </mat-panel-title>
+                        <mat-panel-description>
+
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>I'm visible because I am open</p>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <br>
+        </div>
+
+    </div>
+
+    <ng-template #showError>
+        Oops! Something Went Wrong!
+    </ng-template>
+</ng-template>

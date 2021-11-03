@@ -6,7 +6,7 @@ import { SharedModule } from 'src/app/shared-components/shared.module';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { NotificationComponent } from '../dashboard/notification-tab/notification/notification.component';
+import { EventNotificationComponent } from '../dashboard/notification-tab/event-notification/event-notification.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -19,6 +19,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UserRequestsComponent } from '../dashboard/notification-tab/user-requests/user-requests.component';
 import { PersonalInfoFormComponent } from './personal-info-form/personal-info-form.component';
 import { AdminRequestsComponent } from '../dashboard/notification-tab/admin-requests/admin-requests.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { AdminRequestsComponent } from '../dashboard/notification-tab/admin-requ
     LoginComponent,
     SignupComponent,
     NotificationTabComponent,
-    NotificationComponent,
+    EventNotificationComponent,
     TeamSettingsComponent,
     TeamDetailsComponent,
     UserRequestsComponent,
@@ -41,6 +42,7 @@ import { AdminRequestsComponent } from '../dashboard/notification-tab/admin-requ
     MatSidenavModule,
     MatProgressSpinnerModule,
     MatListModule,
+    MatExpansionModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,13 +21,13 @@ export class TeamService {
       })
       .pipe(
         map((response: any) => {
-          console.log(response.data);
-          return response.data;
+          console.log(response);
+          return response;
         })
       );
   }
 
-  getTeamDetails() {
+  getTeamDetails(): Observable<any> {
     return this.http
       .get('/api/teams/' + this.teamID, {
         headers: new HttpHeaders({
@@ -35,8 +36,8 @@ export class TeamService {
       })
       .pipe(
         map((response: any) => {
-          console.log(response.data);
-          return response.data;
+          // console.log(response);
+          return response;
         })
       );
   }
@@ -50,8 +51,8 @@ export class TeamService {
       })
       .pipe(
         map((response: any) => {
-          console.log(response.data);
-          return response.data;
+          console.log(response);
+          return response;
         })
       );
   }

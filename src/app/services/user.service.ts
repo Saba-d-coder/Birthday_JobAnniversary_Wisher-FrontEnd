@@ -12,7 +12,8 @@ export class UserService {
 
   // to check if user is logged in
   isLoggedIn: boolean = false;
-  authToken: string = '';
+  authToken: string =
+    'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJLU0siLCJleHAiOjE2MzU5MzEyODUsImlhdCI6MTYzNTg0NDg4NX0.tSstxTkcThcoMrJWobL6BqPw4zglmvp-1Wey-cn-rHg';
   userID: number = 100003;
 
   login(data: FormData): Observable<any> {
