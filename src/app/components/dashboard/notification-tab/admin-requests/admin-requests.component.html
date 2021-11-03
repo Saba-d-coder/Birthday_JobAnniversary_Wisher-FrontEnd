@@ -3,7 +3,10 @@
 <ng-template #showRequests>
   <div class="event-cards">
     <div *ngFor="let request of requests">
-      <app-request-card [request]="request"></app-request-card>
+      <app-request-card
+        [request]="request"
+        (refreshRequests)="refreshRequests()"
+      ></app-request-card>
       <br />
     </div>
   </div>

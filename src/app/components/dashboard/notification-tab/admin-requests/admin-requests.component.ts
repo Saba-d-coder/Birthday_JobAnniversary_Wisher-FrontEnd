@@ -25,11 +25,11 @@ export class AdminRequestsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAllRequests();
+    this.getAllPendingRequests();
   }
 
-  getAllRequests() {
-    this.sub = this.adminService.getAllRequests().subscribe({
+  getAllPendingRequests() {
+    this.sub = this.adminService.getAllPendingRequests().subscribe({
       next: (response: any) => {
         if (response.status == 'success') {
           this.requests = response.data;
@@ -42,6 +42,10 @@ export class AdminRequestsComponent implements OnInit {
       },
       error: (err) => this.openSnackBar(err.error.message),
     });
+  }
+
+  refreshRequests() {
+    this.getAllPendingRequests();
   }
 
   openSnackBar(message: string) {

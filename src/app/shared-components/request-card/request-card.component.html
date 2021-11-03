@@ -6,6 +6,11 @@
     <mat-card-subtitle>
       <p>User ID: {{ request?.userID }}</p>
     </mat-card-subtitle>
+
+    <div>
+      <button class="mat-btn" (click)="approveRequest()">Approve</button>
+      <button class="mat-btn" (click)="declineRequest()">Decline</button>
+    </div>
   </mat-card-title-group>
 
   <mat-card-content>
