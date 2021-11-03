@@ -1,0 +1,20 @@
+.event-card {
+  width: 100%;
+}
+
+.mat-btn {
+  font-size: 18px;
+  height: 40px;
+  background-color: rgb(252, 182, 196);
+  border-radius: 3px;
+}
+
+.mat-btn:disabled {
+  background-color: rgb(228, 224, 224);
+  cursor: not-allowed;
+}
+
+.mat-btn:enabled:hover {
+  cursor: pointer;
+  border: none;
+}

@@ -1,11 +1,10 @@
-<div>
-  <p>admin-requests works now!</p>
+<div *ngIf="requests.length == 0; else showRequests">No requests to show</div>
 
-  <div *ngFor="let request of requests">
-    <div>
-      <app-request-card></app-request-card>
+<ng-template #showRequests>
+  <div class="event-cards">
+    <div *ngFor="let request of requests">
+      <app-request-card [request]="request"></app-request-card>
+      <br />
     </div>
-    <br />
-    <p>{{ request.requestID }}</p>
   </div>
-</div>
+</ng-template>
