@@ -13,6 +13,8 @@ import { TeamService } from 'src/app/services/team.service';
 export class AdminRequestsComponent implements OnInit {
   sub!: Subscription | undefined;
 
+  requests: any[] = [];
+
   constructor(
     private router: Router,
     private adminService: AdminService,
@@ -27,7 +29,8 @@ export class AdminRequestsComponent implements OnInit {
     this.sub = this.adminService.getAllRequests().subscribe({
       next: (response: any) => {
         if (response.status == 'success') {
-          console.log(response.data);
+          this.requests = response.data;
+          console.log(this.requests);
         } else {
           // this.openSnackBar(response.message);
         }

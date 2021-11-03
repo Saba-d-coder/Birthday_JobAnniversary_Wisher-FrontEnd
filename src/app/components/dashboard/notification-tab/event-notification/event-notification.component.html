@@ -1,39 +1,46 @@
 <div class="events-container">
-    <br>
-    <div *ngIf="index==0; else tab2">
-        <div *ngIf='birthdays.length==0 else showBirthdays'>
-            No events to show
-        </div>
-
-        <ng-template #showBirthdays>
-            <div class="event-cards">
-                <div *ngFor="let birthday of birthdays" class="team-birthdays">
-                    <div>
-                        <app-event-card [notification]=birthday [birthday]='true'></app-event-card>
-                    </div>
-                    <br>
-                </div>
-            </div>
-
-        </ng-template>
+  <br />
+  <div *ngIf="index == 0; else tab2">
+    <div *ngIf="birthdays.length == 0; else showBirthdays">
+      No events to show
     </div>
 
-    <ng-template #tab2>
-        <div *ngIf='anniversaries.length==0 else showAnniversaries'>
-            No events to show
+    <ng-template #showBirthdays>
+      <div class="event-cards">
+        <div *ngFor="let birthday of birthdays" class="team-birthdays">
+          <div>
+            <app-event-card
+              [notification]="birthday"
+              [birthday]="true"
+            ></app-event-card>
+          </div>
+          <br />
         </div>
-
-        <ng-template #showAnniversaries>
-            <div class="event-cards">
-                <div *ngFor="let anniversary of anniversaries" class="team-anniversaries">
-                    <div>
-                        <app-event-card [notification]=anniversary [anniversary]='true'></app-event-card>
-                    </div>
-                    <br>
-                </div>
-                <br>
-            </div>
-        </ng-template>
-
+      </div>
     </ng-template>
+  </div>
+
+  <ng-template #tab2>
+    <div *ngIf="anniversaries.length == 0; else showAnniversaries">
+      No events to show
+    </div>
+
+    <ng-template #showAnniversaries>
+      <div class="event-cards">
+        <div
+          *ngFor="let anniversary of anniversaries"
+          class="team-anniversaries"
+        >
+          <div>
+            <app-event-card
+              [notification]="anniversary"
+              [anniversary]="true"
+            ></app-event-card>
+          </div>
+          <br />
+        </div>
+        <br />
+      </div>
+    </ng-template>
+  </ng-template>
 </div>

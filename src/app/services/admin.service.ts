@@ -25,4 +25,19 @@ export class AdminService {
         })
       );
   }
+
+  getAllPendingRequests() {
+    return this.http
+      .get('/api/admin/requests/pending', {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.userService.authToken,
+        }),
+      })
+      .pipe(
+        map((response: any) => {
+          console.log(response.data);
+          return response.data;
+        })
+      );
+  }
 }

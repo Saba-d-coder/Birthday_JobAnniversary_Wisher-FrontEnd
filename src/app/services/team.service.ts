@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class TeamService {
   constructor(private http: HttpClient, private userService: UserService) {}
 
-  teamID: number = 100;
+  teamID: number = 101;
 
   getTeamMembers() {
     return this.http

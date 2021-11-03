@@ -11,6 +11,7 @@ export class NotificationTabComponent implements OnInit {
 
   // this event emits the data received from event notification component to dashboard component
   @Output() eventsLengthRetrieved = new EventEmitter();
+  @Output() requestsLengthRetrieved = new EventEmitter();
 
   constructor() {}
 
