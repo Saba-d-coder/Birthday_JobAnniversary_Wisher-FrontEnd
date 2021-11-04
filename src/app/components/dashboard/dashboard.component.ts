@@ -16,6 +16,9 @@ export class DashboardComponent implements OnInit {
 
   // to store counts of events
   eventCounts = new Map();
+  // to store count of requests
+  adminRequestCount: number = 0;
+  userRequestCount: number = 0;
 
   constructor(private userService: UserService, public dialog: MatDialog) {}
 
@@ -26,8 +29,17 @@ export class DashboardComponent implements OnInit {
   }
 
   // this method is called when notification-tab component emits the event
-  setCount(data: any) {
+  setEventCount(data: any) {
     this.eventCounts = data;
+  }
+
+  // this method is called when notification-tab component emits the event
+  setAdminRequestCount(data: any) {
+    this.adminRequestCount = data;
+  }
+
+  setUserRequestCount(data: any) {
+    this.userRequestCount = data;
   }
 
   openDialog() {

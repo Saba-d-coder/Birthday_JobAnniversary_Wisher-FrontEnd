@@ -1,1 +1,14 @@
-<p>admin-requests works!</p>
+<div *ngIf="requests.length == 0; else showRequests">No requests to show</div>
+
+<ng-template #showRequests>
+  <div class="cards">
+    <div *ngFor="let request of requests">
+      <app-request-card
+        [request]="request"
+        [adminRequestCard]="true"
+        (refreshRequests)="refreshRequests()"
+      ></app-request-card>
+      <br />
+    </div>
+  </div>
+</ng-template>

@@ -13,8 +13,8 @@ export class UserService {
   // to check if user is logged in
   isLoggedIn: boolean = false;
   authToken: string =
-    'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJLU0siLCJleHAiOjE2MzU5MzEyODUsImlhdCI6MTYzNTg0NDg4NX0.tSstxTkcThcoMrJWobL6BqPw4zglmvp-1Wey-cn-rHg';
-  userID: number = 100003;
+    'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJLU0siLCJleHAiOjE2MzYwODgyNjAsImlhdCI6MTYzNjAwMTg2MH0.H6SZfVSX3fvVW-Zp73AfQ1BQZse0hXZ3bXjZ34eB4Fo';
+  userID: number = 100001;
 
   login(data: FormData): Observable<any> {
     return this.http.post('/api/login', data);
@@ -45,6 +45,18 @@ export class UserService {
           return response.data;
         })
       );
+  }
+
+  getAllUserRequests(): Observable<any> {
+    var url: string = '/api/users/' + this.userID + '/requests';
+
+    console.log(url);
+
+    return this.http.get(url, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authToken,
+      }),
+    });
   }
 
   logout() {

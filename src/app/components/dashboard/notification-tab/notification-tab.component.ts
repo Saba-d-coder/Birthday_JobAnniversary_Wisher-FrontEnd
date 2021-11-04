@@ -11,6 +11,8 @@ export class NotificationTabComponent implements OnInit {
 
   // this event emits the data received from event notification component to dashboard component
   @Output() eventsLengthRetrieved = new EventEmitter();
+  @Output() adminRequestsLengthRetrieved = new EventEmitter();
+  @Output() userRequestsLengthRetrieved = new EventEmitter();
 
   constructor() {}
 
@@ -22,7 +24,16 @@ export class NotificationTabComponent implements OnInit {
   }
 
   // this method is called when event-notification component emits the event
-  emitToSideNav(data: any) {
+  emitEventLengthsToSideNav(data: any) {
     this.eventsLengthRetrieved.emit(data);
+  }
+
+  // this method is called when admin-requests component emits the event
+  emitAdminRequestsLengthToSideNav(data: number) {
+    this.adminRequestsLengthRetrieved.emit(data);
+  }
+
+  emitUserRequestsLengthToSideNav(data: any) {
+    this.userRequestsLengthRetrieved.emit(data);
   }
 }

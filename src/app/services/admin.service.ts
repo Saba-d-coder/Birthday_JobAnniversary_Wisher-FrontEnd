@@ -12,17 +12,38 @@ export class AdminService {
   teamID: number = 100;
 
   getAllRequests() {
-    return this.http
-      .get('/api/admin/requests', {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + this.userService.authToken,
-        }),
-      })
-      .pipe(
-        map((response: any) => {
-          console.log(response.data);
-          return response.data;
-        })
-      );
+    return this.http.get('/api/admin/requests', {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.userService.authToken,
+      }),
+    });
+  }
+
+  getAllPendingRequests() {
+    return this.http.get('/api/admin/requests/pending', {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.userService.authToken,
+      }),
+    });
+  }
+
+  approveRequest(requestID: number) {
+    var url: string = 'api/admin/requests/' + requestID + '/approve';
+
+    return this.http.get(url, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.userService.authToken,
+      }),
+    });
+  }
+
+  declineRequest(requestID: number) {
+    var url: string = 'api/admin/requests/' + requestID + '/decline';
+
+    return this.http.get(url, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.userService.authToken,
+      }),
+    });
   }
 }

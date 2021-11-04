@@ -1,0 +1,26 @@
+<mat-card class="card">
+  <mat-card-title-group>
+    <mat-card-title>
+      <p>Request {{ request?.requestID }}</p>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <p>User ID: {{ request?.userID }}</p>
+    </mat-card-subtitle>
+
+    <div *ngIf="adminRequestCard; else showUserRequestStatus">
+      <button class="mat-btn" (click)="approveRequest()">Approve</button>
+      <button class="mat-btn" (click)="declineRequest()">Decline</button>
+    </div>
+
+    <ng-template #showUserRequestStatus>
+      <div id="statusDiv" class="approved">STATUS: {{ request?.status }}</div>
+    </ng-template>
+
+    <div></div>
+  </mat-card-title-group>
+
+  <mat-card-content>
+    <p>From Team: {{ request?.currentTeamID }}</p>
+    <p>To Team: {{ request?.newTeamID }}</p>
+  </mat-card-content>
+</mat-card>

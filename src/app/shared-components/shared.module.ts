@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { RequestCardComponent } from './request-card/request-card.component';
 
 import {
   MatDialogModule,
@@ -12,7 +13,7 @@ import {
 import { EventCardComponent } from './event-card/event-card.component';
 
 @NgModule({
-  declarations: [HeaderComponent, EventCardComponent],
+  declarations: [HeaderComponent, EventCardComponent, RequestCardComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -20,7 +21,12 @@ import { EventCardComponent } from './event-card/event-card.component';
     MatIconModule,
     MatDialogModule,
   ],
-  exports: [HeaderComponent, CommonModule, EventCardComponent],
+  exports: [
+    HeaderComponent,
+    CommonModule,
+    EventCardComponent,
+    RequestCardComponent,
+  ],
   providers: [
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: true } },
   ],
