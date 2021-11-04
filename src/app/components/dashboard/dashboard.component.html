@@ -36,7 +36,7 @@
             <mat-divider></mat-divider>
 
             <div *ngIf="inTeam">
-              <button mat-list-item (click)="index = 3"> Team Details ({{teamDetails.teamname}})</button>
+              <button mat-list-item (click)="index = 2"> Team Details ({{teamDetails.teamname}})</button>
             </div>
             <button mat-list-item (click)="openDialog()"> Team Change </button>
 
@@ -46,16 +46,25 @@
           <p class="sidenav-title">&nbsp; Your Account</p>
           <mat-divider></mat-divider>
 
-          <button mat-list-item (click)="index = 4">
-            Sent Requests ({{ userRequestCount }})
+          <button mat-list-item (click)="index = 3">
+            Team Change Requests ({{ userRequestCount }})
           </button>
 
           <div *ngIf="isAdmin">
             <p class="sidenav-title">&nbsp; Admin Controls <mat-icon>settings</mat-icon>
             </p>
             <mat-divider></mat-divider>
-            <button mat-list-item (click)="index = 2">
+            <button mat-list-item (click)="index = 4">
               Requests ({{ adminRequestCount }})
+            </button>
+            <button mat-list-item (click)="index = 5">
+              Add Team
+            </button>
+            <button mat-list-item (click)="index = 6">
+              Delete Team
+            </button>
+            <button mat-list-item (click)="index = 7">
+              Update Team Members
             </button>
           </div>
         </mat-action-list>

@@ -14,11 +14,6 @@
       </app-event-notification>
     </ng-template>
   </mat-tab>
-  <mat-tab>
-    <ng-template matTabContent>
-      <app-admin-requests (adminRequestsLength)="emitAdminRequestsLengthToSideNav($event)"></app-admin-requests>
-    </ng-template>
-  </mat-tab>
   <mat-tab class="team-details-tab">
     <ng-template matTabContent>
       <app-team-details [teamDetails]='teamDetail'></app-team-details>
@@ -27,6 +22,26 @@
   <mat-tab>
     <ng-template matTabContent>
       <app-user-requests (userRequestsLength)="emitUserRequestsLengthToSideNav($event)"></app-user-requests>
+    </ng-template>
+  </mat-tab>
+  <mat-tab>
+    <ng-template matTabContent>
+      <app-admin-requests (adminRequestsLength)="emitAdminRequestsLengthToSideNav($event)"></app-admin-requests>
+    </ng-template>
+  </mat-tab>
+  <mat-tab>
+    <ng-template matTabContent>
+      <app-add-team></app-add-team>
+    </ng-template>
+  </mat-tab>
+  <mat-tab>
+    <ng-template matTabContent>
+      <app-delete-team></app-delete-team>
+    </ng-template>
+  </mat-tab>
+  <mat-tab>
+    <ng-template matTabContent>
+      <app-update-team-members></app-update-team-members>
     </ng-template>
   </mat-tab>
   <!-- #endregion -->
