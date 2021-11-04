@@ -1,4 +1,4 @@
-.event-card {
+.card {
   width: 100%;
 }
 
@@ -17,4 +17,16 @@
 .mat-btn:enabled:hover {
   cursor: pointer;
   border: none;
+}
+
+.pending {
+  background-color: yellow;
+}
+
+.approved {
+  background-color: greenyellow;
+}
+
+.declined {
+  background-color: grey;
 }

@@ -1,4 +1,4 @@
-.event-cards {
+.cards {
   display: grid;
   grid-row-gap: 1rem;
   justify-content: space-evenly;

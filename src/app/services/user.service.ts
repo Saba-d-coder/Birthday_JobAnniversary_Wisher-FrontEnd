@@ -13,7 +13,7 @@ export class UserService {
   // to check if user is logged in
   isLoggedIn: boolean = false;
   authToken: string =
-    'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJLU0siLCJleHAiOjE2MzYwODA2MjksImlhdCI6MTYzNTk5NDIyOX0.qrvSePQK4dUK6t3bVtTfnS_4erNsc-fm3eixAfhCPc8';
+    'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJLU0siLCJleHAiOjE2MzYwODgyNjAsImlhdCI6MTYzNjAwMTg2MH0.H6SZfVSX3fvVW-Zp73AfQ1BQZse0hXZ3bXjZ34eB4Fo';
   userID: number = 100001;
 
   login(data: FormData): Observable<any> {

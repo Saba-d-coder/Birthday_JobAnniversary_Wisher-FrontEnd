@@ -15,6 +15,7 @@ export class RequestCardComponent implements OnInit {
   declineSub: Subscription | undefined;
 
   @Input() request?: Request;
+  @Input() adminRequestCard: boolean = false;
 
   @Output() refreshRequests = new EventEmitter();
 
@@ -23,7 +24,24 @@ export class RequestCardComponent implements OnInit {
     private _snackBar: MatSnackBar
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.adminRequestCard) return;
+
+    var status = this.request?.status;
+    var statusDiv = document.getElementById('statusDiv');
+    switch (status) {
+      case 'PENDING':
+        statusDiv?.classList.add('pending');
+        break;
+      case 'APPROVED':
+        statusDiv?.classList.add('approved');
+        break;
+      case 'DECLINED':
+        console.log(statusDiv);
+        statusDiv?.classList.add('declined');
+        break;
+    }
+  }
 
   approveRequest(): void {
     this.approveSub = this.adminService
