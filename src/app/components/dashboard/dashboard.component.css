@@ -30,6 +30,6 @@
   background-color: rgb(250, 170, 170);
 }
 
-/* .sidenav-content {
-  width: 70%;
-} */
+.sidenav-title .mat-icon {
+  font-size: 22px;
+}

@@ -18,3 +18,7 @@
   cursor: pointer;
   border: none;
 }
+
+mat-icon {
+  vertical-align: sub;
+}

@@ -7,7 +7,11 @@ import { UserService } from './user.service';
   providedIn: 'root',
 })
 export class AdminService {
-  constructor(private http: HttpClient, private userService: UserService) {}
+  currentUser: any;
+
+  constructor(private http: HttpClient, private userService: UserService) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+  }
 
   teamID: number = 100;
 
@@ -15,7 +19,7 @@ export class AdminService {
     return this.http
       .get('/api/admin/requests', {
         headers: new HttpHeaders({
-          Authorization: 'Bearer ' + this.userService.authToken,
+          Authorization: 'Bearer ' + this.currentUser?.token,
         }),
       })
       .pipe(

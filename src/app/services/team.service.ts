@@ -2,26 +2,27 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TeamService {
-  constructor(private http: HttpClient, private userService: UserService) {}
+  currentUser: any;
 
-  teamID: number = 100;
+  constructor(private http: HttpClient) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+  }
 
   getTeamMembers() {
     return this.http
-      .get('/api/teams/' + this.teamID + '/members', {
+      .get('/api/teams/' + this.currentUser?.user['teamID'] + '/members', {
         headers: new HttpHeaders({
-          Authorization: 'Bearer ' + this.userService.authToken,
+          Authorization: 'Bearer ' + this.currentUser?.token,
         }),
       })
       .pipe(
         map((response: any) => {
-          console.log(response);
           return response;
         })
       );
@@ -29,14 +30,13 @@ export class TeamService {
 
   getTeamDetails(): Observable<any> {
     return this.http
-      .get('/api/teams/' + this.teamID, {
+      .get('/api/teams/' + this.currentUser?.user['teamID'], {
         headers: new HttpHeaders({
-          Authorization: 'Bearer ' + this.userService.authToken,
+          Authorization: 'Bearer ' + this.currentUser?.token,
         }),
       })
       .pipe(
         map((response: any) => {
-          // console.log(response);
           return response;
         })
       );
@@ -44,14 +44,16 @@ export class TeamService {
 
   getUpcomingEvents() {
     return this.http
-      .get('/api/teams/' + this.teamID + '/upcomingEvents', {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + this.userService.authToken,
-        }),
-      })
+      .get(
+        '/api/teams/' + this.currentUser?.user['teamID'] + '/upcomingEvents',
+        {
+          headers: new HttpHeaders({
+            Authorization: 'Bearer ' + this.currentUser?.token,
+          }),
+        }
+      )
       .pipe(
         map((response: any) => {
-          console.log(response);
           return response;
         })
       );

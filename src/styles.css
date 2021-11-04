@@ -47,6 +47,12 @@ a {
   border-radius: 10px;
 }
 
+/* ==== Mat Icon Styles ==== */
+
+mat-icon {
+  vertical-align: sub;
+}
+
 /* ==== Login/Signup Form Styles ==== */
 
 .auth-form {

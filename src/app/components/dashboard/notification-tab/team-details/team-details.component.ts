@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Team } from 'src/app/models/team';
 import { User } from 'src/app/models/user';
 import { TeamService } from 'src/app/services/team.service';
 
@@ -14,8 +15,7 @@ import { TeamService } from 'src/app/services/team.service';
 })
 export class TeamDetailsComponent implements OnInit {
   sub!: Subscription | undefined;
-  teamName: string = '';
-  teamDesc: string = '';
+  @Input() teamDetails!: Team;
   teamMembers: User[] = [];
   loading: boolean = false;
   errormessage: string = '';
@@ -29,32 +29,7 @@ export class TeamDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getTeamDetails();
     this.getAllTeamMembers();
-  }
-
-  getTeamDetails() {
-    this.loading = true;
-    this.sub = this.teamService.getTeamDetails().subscribe({
-      next: (response) => {
-        if (response.status == 'success') {
-          console.log(response.data);
-          this.teamName = response.data.teamname;
-          this.teamDesc = response.data.description;
-          this.loading = false;
-        } else {
-          this.error = true;
-          this.errormessage = response.message;
-          this.openSnackBar(response.message);
-          this.loading = false;
-        }
-      },
-      error: (err) => {
-        this.error = true;
-        (this.errormessage = err.error.message),
-          this.openSnackBar(err.error.message);
-      },
-    });
   }
 
   getAllTeamMembers() {
@@ -72,9 +47,21 @@ export class TeamDetailsComponent implements OnInit {
         }
       },
       error: (err) => {
+        if (err.status == 403) {
+          this.router
+            .navigate(['/welcome'], {
+              state: { loading: true },
+              replaceUrl: true,
+            })
+            .then(() => {
+              window.location.reload(),
+                alert('Auth Token Error. Please Login Again');
+            });
+          this.loading = false;
+        }
         this.error = true;
-        (this.errormessage = err.error.message),
-          this.openSnackBar(err.error.message);
+        this.errormessage = err.error;
+        this.openSnackBar(err.error);
       },
     });
   }

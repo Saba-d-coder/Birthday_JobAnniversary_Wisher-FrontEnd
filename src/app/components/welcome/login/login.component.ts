@@ -31,17 +31,19 @@ export class LoginComponent implements OnInit {
     this.sub = this.userService.login(this.userAuth.value).subscribe({
       next: (response: any) => {
         if (response.status == 'success') {
-          this.userService.authToken = response.data;
-          this.openSnackBar(response.message);
-
           this.userService.isLoggedIn = true;
+          localStorage.setItem(
+            'currentUser',
+            JSON.stringify({ token: response.token, user: response.data })
+          );
+
+          this.openSnackBar(response.message);
           this.router.navigate(['/dashboard'], { replaceUrl: true });
-          // .then(() => window.location.replace('/dashboard'));
         } else {
           this.openSnackBar(response.message);
         }
       },
-      error: (err) => this.openSnackBar(err.error.message),
+      error: (err) => this.openSnackBar(err.error),
     });
   }
 

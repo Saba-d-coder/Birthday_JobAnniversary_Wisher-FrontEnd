@@ -3,9 +3,9 @@
 </div>
 
 <ng-template #showDetails>
-    <div *ngIf='!error else showError'>
-        <h2>Team Name: {{teamName}}</h2>
-        <p>{{teamDesc}}</p>
+    <div *ngIf='!error else showError' class="team-details-container">
+        <h2>Team Name: {{teamDetails.teamname}}</h2>
+        <p>{{teamDetails.description}}</p>
         <hr>
         <h3>Team Members</h3>
         <div *ngFor="let member of teamMembers" class="team-members">

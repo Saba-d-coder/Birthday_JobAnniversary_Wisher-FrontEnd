@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Team } from 'src/app/models/team';
 
 @Component({
   selector: 'app-notification-tab',
@@ -6,6 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./notification-tab.component.css'],
 })
 export class NotificationTabComponent implements OnInit {
+  @Input() teamDetail!: Team;
   @Input() index: number = 1;
   @Output() indexChange = new EventEmitter();
 

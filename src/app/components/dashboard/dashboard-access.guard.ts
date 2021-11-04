@@ -25,8 +25,7 @@ export class DashboardAccessGuard implements CanActivate {
     | UrlTree {
     if (this.userService.isLoggedIn) return true;
     else {
-      // return this.router.parseUrl('/welcome');
-      return true;
+      return this.router.parseUrl('/welcome');
     }
   }
 }

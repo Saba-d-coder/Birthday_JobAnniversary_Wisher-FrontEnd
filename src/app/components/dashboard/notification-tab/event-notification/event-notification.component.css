@@ -1,6 +1,5 @@
 .event-cards {
   display: grid;
-  grid-row-gap: 1rem;
   justify-content: space-evenly;
   grid-template-columns: repeat(auto-fill, 500px);
 }

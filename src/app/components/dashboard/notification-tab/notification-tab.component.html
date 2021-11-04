@@ -17,11 +17,10 @@
             <app-admin-requests></app-admin-requests>
         </ng-template>
     </mat-tab>
-    <mat-tab>
+    <mat-tab class="team-details-tab">
         <ng-template matTabContent>
-            <app-team-details></app-team-details>
+            <app-team-details [teamDetails]='teamDetail'></app-team-details>
         </ng-template>
-
     </mat-tab>
     <mat-tab>
         <ng-template matTabContent>

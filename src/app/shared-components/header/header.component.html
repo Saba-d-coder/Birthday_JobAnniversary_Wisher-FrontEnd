@@ -8,17 +8,17 @@
 
             <!-- #region menu items -->
             <mat-menu #menu="matMenu">
-                <button mat-menu-item>
+                <button mat-menu-item (click)='itemClicked("profile")'>
                     <mat-icon>account_box</mat-icon>
-                    <span>My Profile</span>
+                    <span class="menu-name">My Profile</span>
                 </button>
                 <button mat-menu-item [disabled]='disabledDashboard' (click)="itemClicked('dashboard')">
                     <mat-icon>dashboard_icon</mat-icon>
-                    <span>Dashboard</span>
+                    <span class="menu-name">Dashboard</span>
                 </button>
                 <button mat-menu-item (click)="logout()">
                     <mat-icon>logout</mat-icon>
-                    <span>Logout</span>
+                    <span class="menu-name">Logout</span>
                 </button>
             </mat-menu>
             <!-- #endregion -->
