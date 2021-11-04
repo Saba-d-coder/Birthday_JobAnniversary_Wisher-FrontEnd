@@ -12,12 +12,6 @@ export class UserService {
 
   // to check if user is logged in
   isLoggedIn: boolean = false;
-<<<<<<< HEAD
-  authToken: string =
-    'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJLU0siLCJleHAiOjE2MzYwODgyNjAsImlhdCI6MTYzNjAwMTg2MH0.H6SZfVSX3fvVW-Zp73AfQ1BQZse0hXZ3bXjZ34eB4Fo';
-  userID: number = 100001;
-=======
->>>>>>> bp-1
 
   constructor(private http: HttpClient) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
@@ -54,7 +48,8 @@ export class UserService {
   }
 
   getAllUserRequests(): Observable<any> {
-    var url: string = '/api/users/' + this.currentUser?.user['userID'] + '/requests';
+    var url: string =
+      '/api/users/' + this.currentUser?.user['userID'] + '/requests';
 
     console.log(url);
 
@@ -62,17 +57,16 @@ export class UserService {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.currentUser?.token,
       }),
-    })
-    }
-      
-  
+    });
+  }
+
   sendEventWishes(to: number, data: FormData) {
-      return this.http.post('/api/users/' + to + '/wish', data, {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + this.currentUser?.token,
-        }),
-      }) 
-    }
+    return this.http.post('/api/users/' + to + '/wish', data, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.currentUser?.token,
+      }),
+    });
+  }
 
   logout() {
     return this.http.post('/api/logout', {
