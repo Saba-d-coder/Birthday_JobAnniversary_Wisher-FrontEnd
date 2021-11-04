@@ -16,7 +16,7 @@ export class AdminRequestsComponent implements OnInit {
   requests: any[] = [];
 
   // this event emitter emits counts of events to notification-tab component
-  @Output() requestsLength = new EventEmitter();
+  @Output() adminRequestsLength = new EventEmitter();
 
   constructor(
     private router: Router,
@@ -35,7 +35,7 @@ export class AdminRequestsComponent implements OnInit {
           this.requests = response.data;
           console.log(this.requests);
 
-          this.requestsLength.emit(this.requests.length);
+          this.adminRequestsLength.emit(this.requests.length);
         } else {
           // this.openSnackBar(response.message);
         }

@@ -26,7 +26,7 @@
   <mat-tab>
     <ng-template matTabContent>
       <app-admin-requests
-        (requestsLength)="emitAdminRequestsLengthToSideNav($event)"
+        (adminRequestsLength)="emitAdminRequestsLengthToSideNav($event)"
       ></app-admin-requests>
     </ng-template>
   </mat-tab>
@@ -37,7 +37,9 @@
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-user-requests></app-user-requests>
+      <app-user-requests
+        (userRequestsLength)="emitUserRequestsLengthToSideNav($event)"
+      ></app-user-requests>
     </ng-template>
   </mat-tab>
   <!-- #endregion -->
