@@ -31,7 +31,11 @@ export class LoginComponent implements OnInit {
     this.sub = this.userService.login(this.userAuth.value).subscribe({
       next: (response: any) => {
         if (response.status == 'success') {
-          this.openSnackBar(response.message);
+          localStorage.setItem(
+            'loginStatus',
+            JSON.stringify({ isLoggedIn: true })
+          );
+
           localStorage.setItem(
             'currentUser',
             JSON.stringify({
@@ -40,10 +44,7 @@ export class LoginComponent implements OnInit {
             })
           );
 
-          localStorage.setItem(
-            'loginStatus',
-            JSON.stringify({ isLoggedIn: true })
-          );
+          this.openSnackBar(response.message);
 
           this.router.navigate(['/dashboard'], { replaceUrl: true });
         } else {

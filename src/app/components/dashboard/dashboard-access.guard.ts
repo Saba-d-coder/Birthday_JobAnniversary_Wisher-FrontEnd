@@ -13,7 +13,11 @@ import { UserService } from 'src/app/services/user.service';
   providedIn: 'root',
 })
 export class DashboardAccessGuard implements CanActivate {
-  constructor(private userService: UserService, private router: Router) {}
+  loggedIn: any;
+
+  constructor(private userService: UserService, private router: Router) {
+    this.loggedIn = JSON.parse(localStorage.getItem('loginStatus') || '{}');
+  }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -23,7 +27,7 @@ export class DashboardAccessGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.userService.loginStatus?.isLoggedIn) return true;
+    if (this.loggedIn?.isLoggedIn) return true;
     else {
       return this.router.parseUrl('/welcome');
     }
