@@ -16,7 +16,7 @@ import { TeamSettingsComponent } from './notification-tab/team-settings/team-set
 })
 export class DashboardComponent implements OnInit {
   title = 'Dashboard';
-  admin: boolean = false;
+  isAdmin: boolean = false;
   inTeam: boolean = false;
   index: number = 0;
   sub!: Subscription | undefined;
@@ -43,8 +43,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     // getting user's role and
-    this.admin = this.userService.isAdmin();
-    this.inTeam = this.userService.inTeam();
+    this.isAdmin = this.userService.isAdmin();
+    this.inTeam = this.userService.isInTeam();
     this.getTeamDetails();
   }
 

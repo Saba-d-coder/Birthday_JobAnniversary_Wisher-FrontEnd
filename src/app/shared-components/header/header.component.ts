@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     // if current route is dashboard, then disable dashboard menu item
     if (this.router.url != '/dashboard') {
-      this.disabledDashboard = !this.userService.inTeam();
+      this.disabledDashboard = false;
     } else {
       this.disabledDashboard = true;
     }

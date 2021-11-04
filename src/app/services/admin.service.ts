@@ -1,22 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminService {
-  currentUser: any;
-
-  constructor(private http: HttpClient) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-  }
-
-  teamID: number = 100;
+  constructor(private http: HttpClient, public userService: UserService) {}
 
   getAllRequests() {
+    this.userService.updateCurrentUser();
     return this.http.get('/api/admin/requests', {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.currentUser?.token,
+        Authorization: 'Bearer ' + this.userService.currentUser?.token,
       }),
     });
   }
@@ -24,7 +20,7 @@ export class AdminService {
   getAllPendingRequests() {
     return this.http.get('/api/admin/requests/pending', {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.currentUser?.token,
+        Authorization: 'Bearer ' + this.userService.currentUser?.token,
       }),
     });
   }
@@ -34,7 +30,7 @@ export class AdminService {
 
     return this.http.get(url, {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.currentUser?.token,
+        Authorization: 'Bearer ' + this.userService.currentUser?.token,
       }),
     });
   }
@@ -44,7 +40,7 @@ export class AdminService {
 
     return this.http.get(url, {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.currentUser?.token,
+        Authorization: 'Bearer ' + this.userService.currentUser?.token,
       }),
     });
   }

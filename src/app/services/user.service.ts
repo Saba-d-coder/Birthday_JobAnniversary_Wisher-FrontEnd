@@ -22,15 +22,23 @@ export class UserService {
   //   //expired 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJLU0siLCJleHAiOjE2MzU5MzEyODUsImlhdCI6MTYzNTg0NDg4NX0.tSstxTkcThcoMrJWobL6BqPw4zglmvp-1Wey-cn-rHg';
   //   'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJLU0siLCJleHAiOjE2MzYwMjE3MTAsImlhdCI6MTYzNTkzNTMxMH0.ce2mu2WC19_qTfapfR8JzQ9ReS63qIVlGCNVQ4ExQRs';
 
+  updateCurrentUser(): void {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    this.loginStatus = JSON.parse(localStorage.getItem('loginStatus') || '{}');
+  }
+
   login(data: FormData): Observable<any> {
+    this.updateCurrentUser();
     return this.http.post('/api/login', data);
   }
 
   signup(data: FormData): Observable<any> {
+    this.updateCurrentUser();
     return this.http.post('/api/signup', data);
   }
 
   getUserDetails(): Observable<any> {
+    this.updateCurrentUser();
     // endpoint: string = '/api/users/' + this.userID;;
     console.log('/api/users/' + this.currentUser?.user['userID']);
 
@@ -48,6 +56,7 @@ export class UserService {
   }
 
   getAllUserRequests(): Observable<any> {
+    this.updateCurrentUser();
     var url: string =
       '/api/users/' + this.currentUser?.user['userID'] + '/requests';
 
@@ -61,6 +70,7 @@ export class UserService {
   }
 
   sendEventWishes(to: number, data: FormData) {
+    this.updateCurrentUser();
     return this.http.post('/api/users/' + to + '/wish', data, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.currentUser?.token,
@@ -69,6 +79,7 @@ export class UserService {
   }
 
   logout() {
+    this.updateCurrentUser();
     return this.http.post('/api/logout', {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.currentUser?.token,
@@ -77,12 +88,14 @@ export class UserService {
   }
 
   // service to check if user is in any team
-  inTeam(): boolean {
-    return this.currentUser?.user['teamID'] ? true : false;
+  isInTeam(): boolean {
+    this.updateCurrentUser();
+    return this.currentUser.user['teamID'] ? true : false;
   }
 
   // service to check if user is admin
   isAdmin(): boolean {
+    this.updateCurrentUser();
     return this.currentUser?.user['role'] == 'ROLE_ADMIN' ? true : false;
   }
 }
