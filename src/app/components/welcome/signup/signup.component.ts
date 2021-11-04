@@ -33,19 +33,16 @@ export class SignupComponent implements OnInit {
   submit(): void {
     this.sub = this.userService.signup(this.userData.value).subscribe({
       next: (response: any) => {
-        console.log(response);
         if (response.status == 'success') {
-          console.log(response.data);
-          this.userService.authToken = response.data['authToken'];
+          this.userService.isLoggedIn = true;
           this.openSnackBar(response.message);
 
-          this.userService.isLoggedIn = true;
           this.router.navigate(['/form']);
         } else {
           this.openSnackBar(response.message);
         }
       },
-      error: (err) => this.openSnackBar(err.error.message),
+      error: (err) => this.openSnackBar(err.error),
     });
   }
 

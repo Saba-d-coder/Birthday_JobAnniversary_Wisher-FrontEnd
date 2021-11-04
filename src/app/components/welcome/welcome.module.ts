@@ -20,6 +20,8 @@ import { UserRequestsComponent } from '../dashboard/notification-tab/user-reques
 import { PersonalInfoFormComponent } from './personal-info-form/personal-info-form.component';
 import { AdminRequestsComponent } from '../dashboard/notification-tab/admin-requests/admin-requests.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { UserProfileComponent } from '../user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     UserRequestsComponent,
     PersonalInfoFormComponent,
     AdminRequestsComponent,
+    UserProfileComponent,
   ],
   imports: [
     CommonModule,
@@ -42,6 +45,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSidenavModule,
     MatProgressSpinnerModule,
     MatListModule,
+    MatIconModule,
     MatExpansionModule,
     FormsModule,
     ReactiveFormsModule,
@@ -54,6 +58,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
         path: 'dashboard',
         component: DashboardComponent,
         canActivate: [DashboardAccessGuard],
+      },
+      {
+        path: 'profile',
+        component: PersonalInfoFormComponent,
       },
     ]),
   ],

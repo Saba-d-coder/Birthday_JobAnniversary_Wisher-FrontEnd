@@ -1,20 +1,22 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminService {
-  constructor(private http: HttpClient, private userService: UserService) {}
+  currentUser: any;
+
+  constructor(private http: HttpClient) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+  }
 
   teamID: number = 100;
 
   getAllRequests() {
     return this.http.get('/api/admin/requests', {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.userService.authToken,
+        Authorization: 'Bearer ' + this.currentUser?.token,
       }),
     });
   }
@@ -22,7 +24,7 @@ export class AdminService {
   getAllPendingRequests() {
     return this.http.get('/api/admin/requests/pending', {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.userService.authToken,
+        Authorization: 'Bearer ' + this.currentUser?.token,
       }),
     });
   }
@@ -32,7 +34,7 @@ export class AdminService {
 
     return this.http.get(url, {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.userService.authToken,
+        Authorization: 'Bearer ' + this.currentUser?.token,
       }),
     });
   }
@@ -42,7 +44,7 @@ export class AdminService {
 
     return this.http.get(url, {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.userService.authToken,
+        Authorization: 'Bearer ' + this.currentUser?.token,
       }),
     });
   }

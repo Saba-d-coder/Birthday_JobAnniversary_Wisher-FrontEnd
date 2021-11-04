@@ -40,36 +40,49 @@ export class EventNotificationComponent implements OnInit {
 
   getTeamEvents() {
     this.loading = true;
+    var length = new Map();
     this.sub = this.teamService.getUpcomingEvents().subscribe({
       next: (response) => {
         if (response.status == 'success') {
-          console.log(response.data);
-
           this.birthdays = response.data.Birthday;
           this.anniversaries = response.data.Anniversary;
 
           // just to store counts of resp events to display in side nav
-          var length = new Map();
 
           length.set('bdayEvents', this.birthdays.length);
           length.set('anniversaryEvents', this.anniversaries.length);
-
           this.eventsLength.emit(length);
 
           this.loading = false;
         } else {
           this.error = true;
           this.errormessage = response.message;
+          length.set('bdayEvents', 0);
+          length.set('anniversaryEvents', 0);
+          this.eventsLength.emit(length);
 
           this.openSnackBar(response.message);
-
-          this.loading = false;
         }
       },
       error: (err) => {
+        if (err.status == 403) {
+          this.router
+            .navigate(['/welcome'], {
+              state: { loading: true },
+              replaceUrl: true,
+            })
+            .then(() => {
+              window.location.reload(),
+                alert('Auth Token Error. Please Login Again');
+            });
+          this.loading = false;
+        }
+        length.set('bdayEvents', 0);
+        length.set('anniversaryEvents', 0);
+        this.eventsLength.emit(length);
         this.error = true;
-        (this.errormessage = err.error.message),
-          this.openSnackBar(err.error.message);
+        this.errormessage = err.error.message;
+        this.openSnackBar(err.error.message);
       },
     });
   }

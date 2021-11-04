@@ -8,6 +8,7 @@
   <mat-tab>
     <!-- sending index to only app-event-notification coz same component is used for both birthday and anniversary, 
             hence index is used to differentiate between them -->
+<<<<<<< HEAD
     <ng-template matTabContent>
       <app-event-notification
         [index]="index"
@@ -44,3 +45,32 @@
   </mat-tab>
   <!-- #endregion -->
 </mat-tab-group>
+=======
+        <ng-template matTabContent>
+            <app-event-notification [index]='index' (eventsLength)='emitToSideNav($event)'></app-event-notification>
+        </ng-template>
+    </mat-tab>
+    <mat-tab>
+        <ng-template matTabContent>
+            <app-event-notification [index]='index' (eventsLength)='emitToSideNav($event)'></app-event-notification>
+        </ng-template>
+    </mat-tab>
+    <mat-tab>
+        <ng-template matTabContent>
+            <app-admin-requests></app-admin-requests>
+        </ng-template>
+    </mat-tab>
+    <mat-tab class="team-details-tab">
+        <ng-template matTabContent>
+            <app-team-details [teamDetails]='teamDetail'></app-team-details>
+        </ng-template>
+    </mat-tab>
+    <mat-tab>
+        <ng-template matTabContent>
+            <app-user-requests></app-user-requests>
+        </ng-template>
+
+    </mat-tab>
+    <!-- #endregion -->
+</mat-tab-group>
+>>>>>>> bp-1

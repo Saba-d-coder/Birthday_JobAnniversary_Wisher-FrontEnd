@@ -15,9 +15,13 @@ li {
   border: none;
 }
 
+.mat-menu-item .mat-icon {
+  font-size: 30px;
+  vertical-align: text-bottom;
+}
+
 .mat-icon {
   font-size: 30px;
-  /* vertical-align: 2px; */
 }
 
 .mat-icon:hover {

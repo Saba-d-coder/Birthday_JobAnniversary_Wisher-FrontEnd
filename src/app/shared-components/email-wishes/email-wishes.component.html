@@ -1,0 +1,15 @@
+<div class="wish-container">
+    <h1>Enter your wishes</h1>
+    <div class="wish-form">
+        <form [formGroup]="emailWish" (ngSubmit)="submit()" ngNativeValidate>
+
+            <textarea placeholder="Type your message here" formControlName="message" name="message" rows="10" cols="50"
+                required></textarea>
+            <br>
+            <br>
+
+            <button type="submit">Submit</button>
+            <br>
+        </form>
+    </div>
+</div>

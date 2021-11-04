@@ -1,8 +1,10 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { UserProfileComponent } from 'src/app/components/user-profile/user-profile.component';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -25,7 +27,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private userService: UserService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {

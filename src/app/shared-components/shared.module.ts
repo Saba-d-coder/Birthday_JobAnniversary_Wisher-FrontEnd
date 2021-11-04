@@ -11,20 +11,29 @@ import {
   MAT_DIALOG_DEFAULT_OPTIONS,
 } from '@angular/material/dialog';
 import { EventCardComponent } from './event-card/event-card.component';
+import { EmailWishesComponent } from './email-wishes/email-wishes.component';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [HeaderComponent, EventCardComponent, RequestCardComponent],
+  declarations: [
+    HeaderComponent,
+    EventCardComponent,
+    RequestCardComponent,
+    EmailWishesComponent,
+  ],
   imports: [
     CommonModule,
     MatCardModule,
     MatMenuModule,
     MatIconModule,
     MatDialogModule,
+    ReactiveFormsModule,
   ],
   exports: [
     HeaderComponent,
     CommonModule,
     EventCardComponent,
+    EmailWishesComponent,
     RequestCardComponent,
   ],
   providers: [
