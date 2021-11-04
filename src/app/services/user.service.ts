@@ -9,12 +9,12 @@ import { map } from 'rxjs/operators';
 })
 export class UserService {
   currentUser: any;
-
-  // to check if user is logged in
-  isLoggedIn: boolean = false;
+  loginStatus: any;
 
   constructor(private http: HttpClient) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    this.loginStatus = JSON.parse(localStorage.getItem('loginStatus') || '{}');
+    console.log(this.loginStatus?.isLoggedIn);
   }
 
   // authToken: string =

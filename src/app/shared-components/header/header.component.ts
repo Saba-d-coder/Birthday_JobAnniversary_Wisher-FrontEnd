@@ -49,8 +49,10 @@ export class HeaderComponent implements OnInit {
     this.sub = this.userService.logout().subscribe({
       next: () => {
         this.openSnackBar('Log out successful');
-        // maintaining isLoggedIn variable
-        this.userService.isLoggedIn = false;
+        localStorage.setItem(
+          'loginStatus',
+          JSON.stringify({ isLoggedIn: false })
+        );
 
         // navigating to welcome page of successful logout also sending loading state
         // (check welcome component constructor for details)

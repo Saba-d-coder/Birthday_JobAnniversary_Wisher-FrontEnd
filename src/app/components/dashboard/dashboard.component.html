@@ -59,13 +59,13 @@
       <mat-sidenav-content class="sidenav-content">
         <!-- keeping track of changed index when selecting side nav options -->
         <app-notification-tab [(index)]=index (eventsLengthRetrieved)='setEventCount($event)'
-          (adminRequestsLengthRetrieved)="setAdminRequestCount($event)" (userRequestsLengthRetrieved)="setUserRequestCount($event)    
-                [teamDetail]='teamDetails'>
+          (adminRequestsLengthRetrieved)="setAdminRequestCount($event)"
+          (userRequestsLengthRetrieved)="setUserRequestCount($event)" [teamDetail]='teamDetails'>
 
-                </app-notification-tab>
-            </mat-sidenav-content>
-            <!-- #endregion -->
-        </mat-sidenav-container>
-        <!-- #endregion -->
-    </div>
+        </app-notification-tab>
+      </mat-sidenav-content>
+      <!-- #endregion -->
+    </mat-sidenav-container>
+    <!-- #endregion -->
+  </div>
 </ng-template>

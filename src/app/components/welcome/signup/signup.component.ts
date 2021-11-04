@@ -34,7 +34,18 @@ export class SignupComponent implements OnInit {
     this.sub = this.userService.signup(this.userData.value).subscribe({
       next: (response: any) => {
         if (response.status == 'success') {
-          this.userService.isLoggedIn = true;
+          localStorage.setItem(
+            'currentUser',
+            JSON.stringify({
+              token: response.token,
+              user: response.data,
+            })
+          );
+
+          localStorage.setItem(
+            'loginStatus',
+            JSON.stringify({ isLoggedIn: true })
+          );
           this.openSnackBar(response.message);
 
           this.router.navigate(['/form']);
