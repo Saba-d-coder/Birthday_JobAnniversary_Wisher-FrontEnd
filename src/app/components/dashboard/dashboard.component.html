@@ -2,12 +2,11 @@
 
 <p id="dashboard-title">&nbsp; {{ title }}</p>
 
-<div *ngIf='loading else show'>
+<div *ngIf="loading; else show">
   <mat-spinner class="spinner"></mat-spinner>
 </div>
 
 <ng-template #show>
-
   <div class="container">
     <!-- #region side nav container-->
     <mat-sidenav-container class="side-nav-container">
@@ -17,17 +16,17 @@
           <!-- #region Team related notifications -->
           <!-- show notifications and team options only when user is in a team -->
           <div>
-
-            <p class="sidenav-title">&nbsp; Notifications <mat-icon>notifications_active</mat-icon>
+            <p class="sidenav-title">
+              &nbsp; Notifications <mat-icon>notifications_active</mat-icon>
             </p>
             <mat-divider></mat-divider>
 
-            <button mat-list-item (click)="index = 0"> Birthdays
-              ({{eventCounts.get('bdayEvents')}})
+            <button mat-list-item (click)="index = 0">
+              Birthdays ({{ eventCounts.get("bdayEvents") }})
             </button>
 
-            <button mat-list-item (click)="index = 1"> Job Anniversaries
-              ({{eventCounts.get('anniversaryEvents')}})
+            <button mat-list-item (click)="index = 1">
+              Job Anniversaries ({{ eventCounts.get("anniversaryEvents") }})
             </button>
 
             <mat-divider></mat-divider>
@@ -36,10 +35,11 @@
             <mat-divider></mat-divider>
 
             <div *ngIf="inTeam">
-              <button mat-list-item (click)="index = 2"> Team Details ({{teamDetails.teamname}})</button>
+              <button mat-list-item (click)="index = 2">
+                Team Details ({{ teamDetails.teamname }})
+              </button>
             </div>
-            <button mat-list-item (click)="openDialog()"> Team Change </button>
-
+            <button mat-list-item (click)="openDialog()">Team Change</button>
           </div>
           <!-- #endregion -->
 
@@ -51,18 +51,15 @@
           </button>
 
           <div *ngIf="isAdmin">
-            <p class="sidenav-title">&nbsp; Admin Controls <mat-icon>settings</mat-icon>
+            <p class="sidenav-title">
+              &nbsp; Admin Controls <mat-icon>settings</mat-icon>
             </p>
             <mat-divider></mat-divider>
             <button mat-list-item (click)="index = 4">
               Requests ({{ adminRequestCount }})
             </button>
-            <button mat-list-item (click)="index = 5">
-              Add Team
-            </button>
-            <button mat-list-item (click)="index = 6">
-              Delete Team
-            </button>
+            <button mat-list-item (click)="index = 5">Add Team</button>
+            <button mat-list-item (click)="index = 6">Delete Team</button>
             <button mat-list-item (click)="index = 7">
               Update Team Members
             </button>
@@ -73,10 +70,15 @@
       <!-- #region nav tab components -->
       <mat-sidenav-content class="sidenav-content">
         <!-- keeping track of changed index when selecting side nav options -->
-        <app-notification-tab [(index)]=index (eventsLengthRetrieved)='setEventCount($event)'
+        <app-notification-tab
+          [(index)]="index"
+          (eventsLengthRetrieved)="setEventCount($event)"
+          [adminRequests]="adminRequests"
+          [userRequests]="userRequests"
           (adminRequestsLengthRetrieved)="setAdminRequestCount($event)"
-          (userRequestsLengthRetrieved)="setUserRequestCount($event)" [teamDetail]='teamDetails'>
-
+          (userRequestsLengthRetrieved)="setUserRequestCount($event)"
+          [teamDetail]="teamDetails"
+        >
         </app-notification-tab>
       </mat-sidenav-content>
       <!-- #endregion -->

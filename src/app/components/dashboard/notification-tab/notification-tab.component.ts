@@ -16,6 +16,9 @@ export class NotificationTabComponent implements OnInit {
   @Output() adminRequestsLengthRetrieved = new EventEmitter();
   @Output() userRequestsLengthRetrieved = new EventEmitter();
 
+  @Input() adminRequests: any[] = [];
+  @Input() userRequests: any[] = [];
+
   constructor() {}
 
   ngOnInit(): void {}

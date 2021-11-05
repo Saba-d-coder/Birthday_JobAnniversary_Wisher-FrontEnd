@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { UserService } from './user.service';
 export class AdminService {
   constructor(private http: HttpClient, public userService: UserService) {}
 
-  getAllRequests() {
+  getAllRequests(): Observable<any> {
     this.userService.updateCurrentUser();
     return this.http.get('/api/admin/requests', {
       headers: new HttpHeaders({
@@ -17,7 +18,7 @@ export class AdminService {
     });
   }
 
-  getAllPendingRequests() {
+  getAllPendingRequests(): Observable<any> {
     return this.http.get('/api/admin/requests/pending', {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.userService.currentUser?.token,
@@ -25,7 +26,7 @@ export class AdminService {
     });
   }
 
-  approveRequest(requestID: number) {
+  approveRequest(requestID: number): Observable<any> {
     var url: string = 'api/admin/requests/' + requestID + '/approve';
 
     return this.http.get(url, {
@@ -35,7 +36,7 @@ export class AdminService {
     });
   }
 
-  declineRequest(requestID: number) {
+  declineRequest(requestID: number): Observable<any> {
     var url: string = 'api/admin/requests/' + requestID + '/decline';
 
     return this.http.get(url, {

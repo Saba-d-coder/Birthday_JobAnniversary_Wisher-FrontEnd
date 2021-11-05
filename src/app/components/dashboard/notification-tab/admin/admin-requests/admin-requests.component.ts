@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,7 @@ import { TeamService } from 'src/app/services/team.service';
 export class AdminRequestsComponent implements OnInit {
   sub!: Subscription | undefined;
 
-  requests: any[] = [];
+  @Input() requests: any[] = [];
 
   // this event emitter emits counts of events to notification-tab component
   @Output() adminRequestsLength = new EventEmitter();
@@ -25,7 +25,7 @@ export class AdminRequestsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAllPendingRequests();
+    //this.getAllPendingRequests();
   }
 
   getAllPendingRequests() {

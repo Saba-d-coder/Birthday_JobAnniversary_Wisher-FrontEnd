@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UserRequestsComponent implements OnInit {
   sub!: Subscription | undefined;
 
-  requests: any[] = [];
+  @Input() requests: any[] = [];
 
   @Output() userRequestsLength = new EventEmitter();
 
@@ -21,7 +21,7 @@ export class UserRequestsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAllUserRequests();
+    //this.getAllUserRequests();
   }
 
   getAllUserRequests() {

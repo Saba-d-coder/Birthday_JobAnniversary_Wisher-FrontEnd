@@ -1,32 +1,49 @@
-<mat-tab-group [(selectedIndex)]="index" class="header-less-tabs" animationDuration="0ms" name="index">
+<mat-tab-group
+  [(selectedIndex)]="index"
+  class="header-less-tabs"
+  animationDuration="0ms"
+  name="index"
+>
   <!-- #region tab components -->
   <mat-tab>
     <!-- sending index to only app-event-notification coz same component is used for both birthday and anniversary, 
             hence index is used to differentiate between them -->
     <ng-template matTabContent>
-      <app-event-notification [index]="index" (eventsLength)="emitEventLengthsToSideNav($event)">
+      <app-event-notification
+        [index]="index"
+        (eventsLength)="emitEventLengthsToSideNav($event)"
+      >
       </app-event-notification>
     </ng-template>
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-event-notification [index]="index" (eventsLength)="emitEventLengthsToSideNav($event)">
+      <app-event-notification
+        [index]="index"
+        (eventsLength)="emitEventLengthsToSideNav($event)"
+      >
       </app-event-notification>
     </ng-template>
   </mat-tab>
   <mat-tab class="team-details-tab">
     <ng-template matTabContent>
-      <app-team-details [teamDetails]='teamDetail'></app-team-details>
+      <app-team-details [teamDetails]="teamDetail"></app-team-details>
     </ng-template>
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-user-requests (userRequestsLength)="emitUserRequestsLengthToSideNav($event)"></app-user-requests>
+      <app-user-requests
+        [requests]="userRequests"
+        (userRequestsLength)="emitUserRequestsLengthToSideNav($event)"
+      ></app-user-requests>
     </ng-template>
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-admin-requests (adminRequestsLength)="emitAdminRequestsLengthToSideNav($event)"></app-admin-requests>
+      <app-admin-requests
+        [requests]="adminRequests"
+        (adminRequestsLength)="emitAdminRequestsLengthToSideNav($event)"
+      ></app-admin-requests>
     </ng-template>
   </mat-tab>
   <mat-tab>
