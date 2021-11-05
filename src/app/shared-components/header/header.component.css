@@ -1,13 +1,27 @@
 ul {
   list-style: none;
   background-color: rgb(250, 170, 170);
-  overflow: hidden;
   font-size: 20px;
-  padding: 0.5em 0 0 0;
+  padding: 0.2em 0.5em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
-li {
-  float: right;
+::ng-deep .mat-menu-panel {
+  width: 12em;
+}
+
+::ng-deep .mat-menu-content {
+  padding: 0 !important;
+}
+
+.profile-name {
+  padding: 0.5em;
+  font-size: 15px;
+  text-align: center;
+  background-color: rgb(248, 192, 183);
 }
 
 .mat-menu-trigger {
@@ -15,13 +29,13 @@ li {
   border: none;
 }
 
+.mat-icon {
+  font-size: 30px;
+}
+
 .mat-menu-item .mat-icon {
   font-size: 30px;
   vertical-align: text-bottom;
-}
-
-.mat-icon {
-  font-size: 30px;
 }
 
 .mat-icon:hover {

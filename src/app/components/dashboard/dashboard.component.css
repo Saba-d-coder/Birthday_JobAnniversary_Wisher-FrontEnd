@@ -5,7 +5,7 @@
 }
 
 .container {
-  border: 1px solid purple;
+  border: 1px solid coral;
   height: 83vh;
 }
 
@@ -27,7 +27,7 @@
   margin: 0;
   padding: 8px 0;
   font-size: 18px;
-  background-color: rgb(250, 170, 170);
+  background-color: rgb(250, 192, 183);
 }
 
 .sidenav-title .mat-icon {

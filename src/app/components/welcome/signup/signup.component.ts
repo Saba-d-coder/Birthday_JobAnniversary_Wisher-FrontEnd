@@ -49,8 +49,6 @@ export class SignupComponent implements OnInit {
           this.openSnackBar(response.message);
 
           this.router.navigate(['/form']);
-        } else {
-          this.openSnackBar(response.message);
         }
       },
       error: (err) => this.openSnackBar(err.error),

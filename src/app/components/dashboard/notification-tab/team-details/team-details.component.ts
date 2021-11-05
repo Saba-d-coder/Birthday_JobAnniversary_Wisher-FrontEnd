@@ -39,11 +39,6 @@ export class TeamDetailsComponent implements OnInit {
           console.log(response.data);
           this.teamMembers = response.data;
           this.loading = false;
-        } else {
-          this.error = true;
-          this.errormessage = response.message;
-          this.openSnackBar(response.message);
-          this.loading = false;
         }
       },
       error: (err) => {

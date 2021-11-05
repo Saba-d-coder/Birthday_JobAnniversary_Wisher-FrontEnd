@@ -37,22 +37,29 @@ export class UserService {
     return this.http.post('/api/signup', data);
   }
 
+  updateUserInfo(data: FormData): Observable<any> {
+    this.updateCurrentUser();
+    return this.http.put(
+      '/api/users/' + this.currentUser?.user['userID'],
+      data,
+      {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.currentUser?.token,
+        }),
+      }
+    );
+  }
+
   getUserDetails(): Observable<any> {
     this.updateCurrentUser();
     // endpoint: string = '/api/users/' + this.userID;;
     console.log('/api/users/' + this.currentUser?.user['userID']);
 
-    return this.http
-      .get('/api/users/' + this.currentUser?.user['userID'], {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + this.currentUser?.token,
-        }),
-      })
-      .pipe(
-        map((response: any) => {
-          return response.data;
-        })
-      );
+    return this.http.get('/api/users/' + this.currentUser?.user['userID'], {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.currentUser?.token,
+      }),
+    });
   }
 
   getAllUserRequests(): Observable<any> {
