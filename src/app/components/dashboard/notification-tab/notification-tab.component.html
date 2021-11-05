@@ -1,27 +1,16 @@
-<mat-tab-group
-  [(selectedIndex)]="index"
-  class="header-less-tabs"
-  animationDuration="0ms"
-  name="index"
->
+<mat-tab-group [(selectedIndex)]="index" class="header-less-tabs" animationDuration="0ms" name="index">
   <!-- #region tab components -->
   <mat-tab>
     <!-- sending index to only app-event-notification coz same component is used for both birthday and anniversary, 
             hence index is used to differentiate between them -->
     <ng-template matTabContent>
-      <app-event-notification
-        [index]="index"
-        (eventsLength)="emitEventLengthsToSideNav($event)"
-      >
+      <app-event-notification [index]="index" (eventsLength)="emitEventLengthsToSideNav($event)">
       </app-event-notification>
     </ng-template>
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-event-notification
-        [index]="index"
-        (eventsLength)="emitEventLengthsToSideNav($event)"
-      >
+      <app-event-notification [index]="index" (eventsLength)="emitEventLengthsToSideNav($event)">
       </app-event-notification>
     </ng-template>
   </mat-tab>
@@ -32,18 +21,16 @@
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-user-requests
-        [requests]="userRequests"
-        (userRequestsLength)="emitUserRequestsLengthToSideNav($event)"
-      ></app-user-requests>
+      <app-requests-notification [teams]='teams' [requests]="userRequests" [adminRequest]="false"
+        (userRequestsLength)="emitUserRequestsLengthToSideNav($event)">
+      </app-requests-notification>
     </ng-template>
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-admin-requests
-        [requests]="adminRequests"
-        (adminRequestsLength)="emitAdminRequestsLengthToSideNav($event)"
-      ></app-admin-requests>
+      <app-requests-notification [teams]='teams' [requests]="adminRequests" [adminRequest]="true"
+        (userRequestsLength)="emitUserRequestsLengthToSideNav($event)">
+      </app-requests-notification>
     </ng-template>
   </mat-tab>
   <mat-tab>

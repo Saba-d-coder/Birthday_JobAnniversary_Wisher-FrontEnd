@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Team } from 'src/app/models/team';
+import { TeamService } from 'src/app/services/team.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-notification-tab',
@@ -19,7 +24,17 @@ export class NotificationTabComponent implements OnInit {
   @Input() adminRequests: any[] = [];
   @Input() userRequests: any[] = [];
 
-  constructor() {}
+  teams: any[] = [];
+  errormessage: string = '';
+  error: boolean = false;
+  sub!: Subscription | undefined;
+
+  constructor(
+    private userService: UserService,
+    public dialog: MatDialog,
+    private teamService: TeamService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -40,5 +55,18 @@ export class NotificationTabComponent implements OnInit {
 
   emitUserRequestsLengthToSideNav(data: any) {
     this.userRequestsLengthRetrieved.emit(data);
+  }
+
+  getAllTeams() {
+    this.sub = this.teamService.getAllTeams().subscribe({
+      next: (response: any) => {
+        if (response?.get('allTeams').status == 'success') {
+          this.teams = response.get('allTeams').teamMap;
+        }
+      },
+      error: (err) => {
+        console.log(err.error);
+      },
+    });
   }
 }

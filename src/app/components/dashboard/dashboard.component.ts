@@ -34,7 +34,6 @@ export class DashboardComponent implements OnInit {
   teamDetails!: Team;
   adminRequests: any[] = [];
   userRequests: any[] = [];
-  teams: any[] = [];
 
   sub!: Subscription | undefined;
   adminRequestsSub: Subscription | undefined;
@@ -56,7 +55,6 @@ export class DashboardComponent implements OnInit {
     this.getTeamDetails();
     this.getAdminRequests();
     this.getUserRequests();
-    this.getAllTeams();
   }
 
   //#region these methods are called when notification-tab component emits the event
@@ -168,20 +166,6 @@ export class DashboardComponent implements OnInit {
         this.error = true;
         this.errormessage = err.error;
         this.openSnackBar(err.error);
-      },
-    });
-  }
-
-  getAllTeams() {
-    this.sub = this.teamService.getAllTeams().subscribe({
-      next: (response: any) => {
-        if (response?.get('allTeams').status == 'success') {
-          this.teams = response.get('allTeams').teamMap;
-        }
-      },
-      error: (err) => {
-        this.openSnackBar(err.error);
-        console.log(err.error);
       },
     });
   }
