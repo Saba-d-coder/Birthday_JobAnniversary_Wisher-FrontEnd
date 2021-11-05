@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Team } from 'src/app/models/team';
+import { TeamService } from 'src/app/services/team.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -13,6 +15,7 @@ import { UserService } from 'src/app/services/user.service';
 export class PersonalInfoFormComponent implements OnInit {
   sub!: Subscription | undefined;
   loading: boolean = false;
+  teams: Team[] = [];
   minDate = new Date(new Date().setFullYear(new Date().getFullYear() - 80));
   maxBirthDate = new Date(
     new Date().setFullYear(new Date().getFullYear() - 20)
@@ -25,42 +28,56 @@ export class PersonalInfoFormComponent implements OnInit {
     gender: null,
     address: null,
     contact: null,
+    teamID: null,
   });
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
+    private teamService: TeamService,
     private _snackBar: MatSnackBar
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAllTeams();
+  }
+
+  getAllTeams() {
+    this.loading = true;
+    this.sub = this.teamService.getAllTeams().subscribe({
+      next: (response: any) => {
+        if (response.status == 'success') {
+          console.log(response.data);
+          this.teams = response.data;
+          this.loading = false;
+        }
+      },
+      error: (err) => {
+        this.loading = false;
+        this.openSnackBar(err.error);
+        console.log(err.error);
+      },
+    });
+  }
 
   submit(): void {
-    // this.loading = true;
-    console.log(this.userData.value);
-    // this.sub = this.userService.updateDetails(this.userData.value).subscribe({
-    //   next: (response: any) => {
-    //     if (response.status == 'success') {
-    //       console.log(response.data);
-    //       this.userService.authToken = response.data['authToken'];
-    //       this.openSnackBar(response.message);
-
-    //       // setting loggedIn true for guard on homepage
-    //       this.userService.toggleLoggedIn();
-    this.router.navigate(['/dashboard']);
-    //     } else {
-    //       this.openSnackBar(response.message);
-    //     }
-    //     this.loading = false;
-    //   },
-    //   error: (err) => this.openSnackBar(err.error.message),
-    // });
+    this.sub = this.userService.updateUserInfo(this.userData.value).subscribe({
+      next: (response: any) => {
+        if (response.status == 'success') {
+          this.openSnackBar(response.message);
+          this.router.navigate(['/dashboard']);
+        }
+      },
+      error: (err) => {
+        this.openSnackBar(err.error), console.log(err.error);
+      },
+    });
   }
 
   openSnackBar(message: string) {
     this._snackBar.open(message, '', {
-      duration: 1000,
+      duration: 2000,
       panelClass: ['snackbar'],
     });
   }

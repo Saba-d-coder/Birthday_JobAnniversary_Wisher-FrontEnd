@@ -1,1 +1,10 @@
-<p>user-profile works!</p>
+<app-header></app-header>
+
+<p id="dashboard-title">&nbsp; {{ title }}</p>
+
+<div *ngIf='loading else show'>
+    <mat-spinner class="spinner"></mat-spinner>
+</div>
+
+<ng-template #show>
+</ng-template>

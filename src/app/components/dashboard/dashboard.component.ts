@@ -79,11 +79,6 @@ export class DashboardComponent implements OnInit {
         if (response.status == 'success') {
           this.teamDetails = response.data;
           this.loading = false;
-        } else {
-          this.error = true;
-          this.errormessage = response.message;
-          this.openSnackBar(response.message);
-          this.loading = false;
         }
       },
       error: (err) => {

@@ -1,13 +1,17 @@
 <nav>
     <ul>
-        <li style="float: left;"><a href="home">&nbsp; JustnOrg</a></li>
+        <li style="float: left;"><a href="dashboard">&nbsp; JustnOrg</a></li>
         <li>
             <button mat-icon-button [matMenuTriggerFor]="menu">
-                <mat-icon>account_circle</mat-icon> &nbsp;
+                <mat-icon>account_circle</mat-icon>
             </button>
 
             <!-- #region menu items -->
             <mat-menu #menu="matMenu">
+                <div class="profile-name">
+                    Welcome! <br>
+                    {{user.firstName}} {{user.lastName}}
+                </div>
                 <button mat-menu-item (click)='itemClicked("profile")'>
                     <mat-icon>account_box</mat-icon>
                     <span class="menu-name">My Profile</span>

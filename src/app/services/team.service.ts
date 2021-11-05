@@ -8,7 +8,7 @@ import { UserService } from './user.service';
   providedIn: 'root',
 })
 export class TeamService {
-  constructor(private http: HttpClient, public userService: UserService) {}
+  constructor(private http: HttpClient, private userService: UserService) {}
 
   getTeamMembers() {
     this.userService.updateCurrentUser();
@@ -58,6 +58,21 @@ export class TeamService {
           }),
         }
       )
+      .pipe(
+        map((response: any) => {
+          return response;
+        })
+      );
+  }
+
+  getAllTeams() {
+    this.userService.updateCurrentUser();
+    return this.http
+      .get('/api/teams', {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.userService.currentUser?.token,
+        }),
+      })
       .pipe(
         map((response: any) => {
           return response;

@@ -12,6 +12,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PersonalInfoFormComponent } from './personal-info-form/personal-info-form.component';
 import { DashboardModule } from '../dashboard/dashboard.module';
 import { MatTabsModule } from '@angular/material/tabs';
+import { UserProfileComponent } from '../user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     LoginComponent,
     SignupComponent,
     PersonalInfoFormComponent,
+    UserProfileComponent,
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,7 @@ import { MatTabsModule } from '@angular/material/tabs';
       },
       {
         path: 'profile',
-        component: PersonalInfoFormComponent,
+        component: UserProfileComponent,
       },
     ]),
     DashboardModule,

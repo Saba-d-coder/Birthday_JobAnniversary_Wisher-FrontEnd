@@ -4,7 +4,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { UserProfileComponent } from 'src/app/components/user-profile/user-profile.component';
+import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   // For disabling specific menu items
   disabledDashboard: boolean = false;
   sub!: Subscription | undefined;
+  user!: User;
   loading: boolean = false;
 
   constructor(
@@ -32,6 +33,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.user = this.userService.currentUser?.user;
     // if current route is dashboard, then disable dashboard menu item
     if (this.router.url != '/dashboard') {
       this.disabledDashboard = false;

@@ -6,7 +6,7 @@ import { UserService } from './user.service';
   providedIn: 'root',
 })
 export class AdminService {
-  constructor(private http: HttpClient, public userService: UserService) {}
+  constructor(private http: HttpClient, private userService: UserService) {}
 
   getAllRequests() {
     this.userService.updateCurrentUser();

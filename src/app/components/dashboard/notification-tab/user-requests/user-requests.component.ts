@@ -29,14 +29,11 @@ export class UserRequestsComponent implements OnInit {
       next: (response: any) => {
         if (response.status == 'success') {
           this.requests = response.data;
-          console.log(this.requests);
 
           this.userRequestsLength.emit(this.requests.length);
-        } else {
-          // this.openSnackBar(response.message);
         }
       },
-      error: (err) => this.openSnackBar(err.error.message),
+      error: (err) => this.openSnackBar(err.error),
     });
   }
 

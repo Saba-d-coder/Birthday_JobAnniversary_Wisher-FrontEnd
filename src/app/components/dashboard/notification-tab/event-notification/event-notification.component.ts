@@ -54,14 +54,6 @@ export class EventNotificationComponent implements OnInit {
           this.eventsLength.emit(length);
 
           this.loading = false;
-        } else {
-          this.error = true;
-          this.errormessage = response.message;
-          length.set('bdayEvents', 0);
-          length.set('anniversaryEvents', 0);
-          this.eventsLength.emit(length);
-
-          this.openSnackBar(response.message);
         }
       },
       error: (err) => {

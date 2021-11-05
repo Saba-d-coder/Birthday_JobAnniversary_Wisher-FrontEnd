@@ -46,9 +46,9 @@ export class LoginComponent implements OnInit {
 
           this.openSnackBar(response.message);
 
-          this.router.navigate(['/dashboard'], { replaceUrl: true });
-        } else {
-          this.openSnackBar(response.message);
+          if (response.data['birthDate'] && response.data['hireDate'])
+            this.router.navigate(['/dashboard'], { replaceUrl: true });
+          else this.router.navigate(['/form'], { replaceUrl: true });
         }
       },
       error: (err) => this.openSnackBar(err.error),

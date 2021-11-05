@@ -33,14 +33,11 @@ export class AdminRequestsComponent implements OnInit {
       next: (response: any) => {
         if (response.status == 'success') {
           this.requests = response.data;
-          console.log(this.requests);
 
           this.adminRequestsLength.emit(this.requests.length);
-        } else {
-          // this.openSnackBar(response.message);
         }
       },
-      error: (err) => this.openSnackBar(err.error.message),
+      error: (err) => this.openSnackBar(err.error),
     });
   }
 
