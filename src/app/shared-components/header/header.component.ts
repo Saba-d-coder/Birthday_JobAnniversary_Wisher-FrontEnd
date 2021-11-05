@@ -20,7 +20,8 @@ export class HeaderComponent implements OnInit {
   }
 
   // For disabling specific menu items
-  disabledDashboard: boolean = false;
+  disableDashboard: boolean = false;
+  disableProfile: boolean = false;
   sub!: Subscription | undefined;
   user!: User;
   loading: boolean = false;
@@ -34,11 +35,15 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.userService.currentUser?.user;
-    // if current route is dashboard, then disable dashboard menu item
-    if (this.router.url != '/dashboard') {
-      this.disabledDashboard = false;
-    } else {
-      this.disabledDashboard = true;
+    // if current route is dashboard or profile, then disable resp menu item
+
+    switch (this.router.url) {
+      case '/dashboard':
+        this.disableDashboard = true;
+        break;
+      case '/profile':
+        this.disableProfile = true;
+        break;
     }
   }
 

@@ -14,7 +14,7 @@ export class RequestCardComponent implements OnInit {
   approveSub: Subscription | undefined;
   declineSub: Subscription | undefined;
 
-  @Input() request!: Request;
+  @Input() request!: any;
   @Input() adminRequestCard: boolean = false;
 
   @Output() refreshRequests = new EventEmitter();
@@ -28,7 +28,7 @@ export class RequestCardComponent implements OnInit {
 
   approveRequest(): void {
     this.approveSub = this.adminService
-      .approveRequest(this.request!.requestID)
+      .approveRequest(this.request!.id)
       .subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
@@ -42,7 +42,7 @@ export class RequestCardComponent implements OnInit {
 
   declineRequest(): void {
     this.declineSub = this.adminService
-      .declineRequest(this.request!.requestID)
+      .declineRequest(this.request!.id)
       .subscribe({
         next: (response: any) => {
           if (response.status == 'success') {

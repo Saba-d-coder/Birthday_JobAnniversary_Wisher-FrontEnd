@@ -18,8 +18,8 @@ export class AdminService {
     });
   }
 
-  getAllPendingRequests(): Observable<any> {
-    return this.http.get('/api/admin/requests/pending', {
+  getAllPendingRequests(userID: number): Observable<any> {
+    return this.http.get('/api/admin/' + userID + '/requests/pending', {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.userService.currentUser?.token,
       }),

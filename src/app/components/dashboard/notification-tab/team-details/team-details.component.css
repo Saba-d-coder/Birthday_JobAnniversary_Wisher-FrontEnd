@@ -1,3 +1,40 @@
 .team-details-container {
   margin: 1em;
 }
+
+.team-title {
+  font-size: large;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.member-header {
+  text-align: center;
+  font-size: large;
+  color: coral;
+}
+
+.panel-title {
+  padding-top: 3px;
+  font-size: 16px;
+}
+
+.panel-desc {
+  padding-left: 1em;
+  display: flex;
+  flex-direction: row;
+}
+
+.panel-desc-left,
+.panel-desc-right {
+  width: 50%;
+}
+
+.panel-desc-label {
+  font-size: medium;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.panel-desc-value {
+  font-size: medium;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}

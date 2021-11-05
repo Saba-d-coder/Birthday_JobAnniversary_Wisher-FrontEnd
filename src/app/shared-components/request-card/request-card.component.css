@@ -27,6 +27,10 @@
   font-size: 18px;
 }
 
+.card-content-name {
+  color: red;
+}
+
 .PENDING {
   color: rgb(209, 209, 28);
 }

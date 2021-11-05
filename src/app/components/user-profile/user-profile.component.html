@@ -1,10 +1,38 @@
 <app-header></app-header>
-
-<p id="dashboard-title">&nbsp; {{ title }}</p>
-
 <div *ngIf='loading else show'>
     <mat-spinner class="spinner"></mat-spinner>
 </div>
 
 <ng-template #show>
+    <br>
+    <p id="profile-title">&nbsp; {{ title }}</p>
+    <hr>
+    <br>
+    <div class="profile">
+        <div class="profile-pic">
+            <img src="{{userDetails.image}}" alt="pff">
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class="profile-details">
+            <p> <span class="profile-label">User Name: </span> <span class="profile-value"> {{userDetails.username}}
+                </span>
+            </p>
+            <p> <span class="profile-label">Full Name: </span> <span class="profile-value"> {{userDetails.firstName}}
+                    {{userDetails.lastName}}</span> </p>
+            <p> <span class="profile-label">Email: </span> <span class="profile-value"> {{userDetails.email}}</span></p>
+            <p *ngIf='userDetails.hireDate'>
+                <span class="profile-label">Hire Date: </span> <span
+                    class="profile-value">{{userDetails.hireDate}}</span>
+            </p>
+            <p *ngIf='userDetails.birthDate'>
+                <span class="profile-label">
+                    DOB:
+                </span> <span class="profile-value">{{userDetails.birthDate}}</span>
+            </p>
+        </div>
+
+    </div>
+
 </ng-template>

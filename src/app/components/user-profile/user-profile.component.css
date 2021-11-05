@@ -1,0 +1,36 @@
+#profile-title {
+  text-align: center;
+  font-size: large;
+}
+
+.profile {
+  margin: auto;
+  width: 30vw;
+  height: 70vh;
+  border-radius: 10px;
+  box-shadow: 5px 5px 8px rgb(235, 185, 168);
+}
+
+.profile-pic {
+  padding-top: 1em;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-pic > img {
+  height: 15em;
+  width: 15em;
+  border-radius: 50%;
+}
+
+.profile-details {
+  font-size: large;
+  padding: 0 1em;
+}
+
+.profile-label {
+  color: coral;
+}
+.profile-value {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

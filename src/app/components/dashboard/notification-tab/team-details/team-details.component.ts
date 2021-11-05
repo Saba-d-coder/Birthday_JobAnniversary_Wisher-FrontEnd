@@ -33,10 +33,10 @@ export class TeamDetailsComponent implements OnInit {
   }
 
   getAllTeamMembers() {
+    this.loading = true;
     this.sub = this.teamService.getTeamMembers().subscribe({
       next: (response) => {
         if (response.status == 'success') {
-          console.log(response.data);
           this.teamMembers = response.data;
           this.loading = false;
         }

@@ -29,7 +29,7 @@
                 <br>
                 <select name="teams" id="teams" formControlName="teamID" required>
                     <option selected="true" disabled='true'>Select Team</option>
-                    <option *ngFor="let team of teams" [ngValue]="team.teamID">
+                    <option *ngFor="let team of teams" [ngValue]="team.teamID" [disabled]='team.teamID==currentTeamID'>
                         {{team.teamname}}
                     </option>
                 </select>

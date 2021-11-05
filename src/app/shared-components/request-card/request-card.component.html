@@ -1,11 +1,11 @@
 <mat-card class="card">
   <mat-card-title-group>
     <mat-card-title>
-      <p>Request ID: {{ request?.requestID }}</p>
+      <p>Request ID: {{ request?.id }}</p>
     </mat-card-title>
 
-    <mat-card-subtitle *ngIf="adminRequestCard">
-      <p>User ID: {{ request?.userID }}</p>
+    <mat-card-subtitle>
+      <p> {{ request?.time_stamp }}</p>
     </mat-card-subtitle>
 
     <div *ngIf="adminRequestCard; else showUserRequestStatus">
@@ -20,11 +20,12 @@
   </mat-card-title-group>
 
   <mat-card-content>
-    <p *ngIf="request.currentTeamID==0 else elseBlock">
-      Request to join the team: {{request.newTeamID}}
+    <p *ngIf="adminRequestCard else elseBlock">
+      <span class="card-content-name">{{ request?.username }}</span> has requested to join <span
+        class="card-content-name">{{request.new_team_name}}</span> team
     </p>
     <ng-template #elseBlock>
-      Request to change the team from: {{request.currentTeamID}} to :{{request.newTeamID}}
+      You have requested to join <span class="card-content-name">{{request.new_team_name}}</span> team
     </ng-template>
   </mat-card-content>
 </mat-card>

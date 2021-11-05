@@ -21,15 +21,14 @@
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-requests-notification [teams]='teams' [requests]="userRequests" [adminRequest]="false"
-        (userRequestsLength)="emitUserRequestsLengthToSideNav($event)">
+      <app-requests-notification [teams]='teams' [requests]="userRequests" [adminRequest]="false">
       </app-requests-notification>
     </ng-template>
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
       <app-requests-notification [teams]='teams' [requests]="adminRequests" [adminRequest]="true"
-        (userRequestsLength)="emitUserRequestsLengthToSideNav($event)">
+        (adminRequestsLength)="emitAdminRequestsLengthToSideNav($event)">
       </app-requests-notification>
     </ng-template>
   </mat-tab>

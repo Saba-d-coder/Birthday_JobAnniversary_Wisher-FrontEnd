@@ -74,11 +74,7 @@ export class DashboardComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(TeamSettingsComponent, {
-      height: '400px',
-      width: '600px',
-      data: {
-        team: 'Dev Team',
-      },
+      height: '40%',
     });
   }
 
@@ -114,9 +110,11 @@ export class DashboardComponent implements OnInit {
 
   getAdminRequests() {
     if (!this.isAdmin) return;
+    this.userService.updateCurrentUser();
+    var userID = this.userService.currentUser?.user['userID'];
 
     this.adminRequestsSub = this.adminService
-      .getAllPendingRequests()
+      .getAllPendingRequests(userID)
       .subscribe({
         next: (response) => {
           if (response.status == 'success') {

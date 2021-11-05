@@ -4,7 +4,8 @@
 <ng-template #showRequests>
     <div class="cards">
         <div *ngFor="let request of requests">
-            <app-request-card [request]="request" [adminRequestCard]="adminRequest"></app-request-card>
+            <app-request-card [request]="request" [adminRequestCard]="adminRequest" (refreshRequests)="refresh()">
+            </app-request-card>
             <br />
         </div>
     </div>

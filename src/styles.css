@@ -18,6 +18,11 @@ a {
   color: black;
 }
 
+hr {
+  background-color: black;
+  border: 0.5px solid black;
+}
+
 /* ==== Progress Spinner Styles==== */
 
 .spinner {
@@ -49,7 +54,7 @@ a {
 
 /* ==== Mat Icon Styles ==== */
 
-mat-icon {
+::ng-deep mat-icon {
   vertical-align: sub;
 }
 

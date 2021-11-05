@@ -1,3 +1,24 @@
-<p>team-settings goes here</p>
+<div *ngIf="loading; else show">
+    <mat-spinner class="spinner"></mat-spinner>
+</div>
 
-<p>{{data['team']}}</p>
+<ng-template #show>
+
+    <h1>Send Request For Joining/Switching Team</h1>
+
+    <div class="request-form">
+        <form [formGroup]="teamRequest" ngNativeValidate (ngSubmit)="submit()">
+            <br>
+            <select name="teams" id="teams" formControlName="teamID" required>
+                <option selected="true" disabled='true'>Select Team</option>
+                <option *ngFor="let team of teams" [ngValue]="team.teamID" [disabled]='team.teamID==currentTeamID'>
+                    {{team.teamname}}
+                </option>
+            </select>
+            <br>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</ng-template>

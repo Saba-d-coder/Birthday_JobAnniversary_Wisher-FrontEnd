@@ -15,11 +15,18 @@ import { UserService } from 'src/app/services/user.service';
 export class PersonalInfoFormComponent implements OnInit {
   sub!: Subscription | undefined;
   loading: boolean = false;
+  currentTeamID!: string;
   teams: Team[] = [];
+
+  // min age is 20
   minDate = new Date(new Date().setFullYear(new Date().getFullYear() - 80));
+  // max age is 80
+
   maxBirthDate = new Date(
     new Date().setFullYear(new Date().getFullYear() - 20)
   );
+
+  // hire date cannot be a future date
   maxHireDate = new Date();
 
   userData = this.formBuilder.group({
@@ -40,6 +47,8 @@ export class PersonalInfoFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.userService.updateCurrentUser();
+    this.currentTeamID = this.userService.currentUser?.user['teamID'];
     this.getAllTeams();
   }
 
@@ -47,8 +56,8 @@ export class PersonalInfoFormComponent implements OnInit {
     this.loading = true;
     this.sub = this.teamService.getAllTeams().subscribe({
       next: (response: any) => {
-        if (response?.get('allTeams').status == 'success') {
-          this.teams = response.get('allTeams').data;
+        if (response.status == 'success') {
+          this.teams = response.data;
           this.loading = false;
         }
       },

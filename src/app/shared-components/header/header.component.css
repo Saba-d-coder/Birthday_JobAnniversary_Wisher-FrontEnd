@@ -31,6 +31,7 @@ ul {
 
 .mat-icon {
   font-size: 30px;
+  vertical-align: sub;
 }
 
 .mat-menu-item .mat-icon {

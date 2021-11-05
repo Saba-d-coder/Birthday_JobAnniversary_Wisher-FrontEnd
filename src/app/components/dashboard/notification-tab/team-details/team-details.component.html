@@ -4,22 +4,50 @@
 
 <ng-template #showDetails>
     <div *ngIf='!error else showError' class="team-details-container">
-        <h2>Team Name: {{teamDetails.teamname}}</h2>
+        <h2 class="team-title">{{teamDetails.teamname}} Team</h2>
         <p>{{teamDetails.description}}</p>
         <hr>
-        <h3>Team Members</h3>
+        <br>
+        <h3 class="member-header">Team Members</h3>
         <div *ngFor="let member of teamMembers" class="team-members">
             <mat-accordion>
                 <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            {{member.username}}
+                            <mat-icon>account_circle</mat-icon> &nbsp;
+                            <span class="panel-title"> {{member.firstName}} {{member.lastName}}</span>
                         </mat-panel-title>
                         <mat-panel-description>
 
                         </mat-panel-description>
                     </mat-expansion-panel-header>
-                    <p>I'm visible because I am open</p>
+                    <hr>
+                    <br>
+                    <div class="panel-desc">
+                        <div class="panel-desc-left">
+                            <p>
+                                <span class="panel-desc-label">User Name: </span> <span
+                                    class="panel-desc-value">{{member.username}}</span>
+                            </p>
+                            <p>
+                                <span class="panel-desc-label">Email: </span> <span
+                                    class="panel-desc-value">{{member.email}}</span>
+                            </p>
+                        </div>
+                        <div class="panel-desc-right">
+                            <p *ngIf='member.hireDate'>
+                                <span class="panel-desc-label">Hire Date: </span> <span
+                                    class="panel-desc-value">{{member.hireDate}}</span>
+                            </p>
+                            <p *ngIf='member.birthDate'>
+                                <span class="panel-desc-label">
+                                    DOB:
+                                </span> <span class="panel-desc-value">{{member.birthDate}}</span>
+                            </p>
+                        </div>
+                    </div>
+
+
                 </mat-expansion-panel>
             </mat-accordion>
             <br>

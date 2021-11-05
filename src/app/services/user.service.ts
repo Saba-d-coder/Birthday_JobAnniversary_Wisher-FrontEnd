@@ -52,8 +52,6 @@ export class UserService {
 
   getUserDetails(): Observable<any> {
     this.updateCurrentUser();
-    // endpoint: string = '/api/users/' + this.userID;;
-    console.log('/api/users/' + this.currentUser?.user['userID']);
 
     return this.http.get('/api/users/' + this.currentUser?.user['userID'], {
       headers: new HttpHeaders({
@@ -66,8 +64,6 @@ export class UserService {
     this.updateCurrentUser();
     var url: string =
       '/api/users/' + this.currentUser?.user['userID'] + '/requests';
-
-    console.log(url);
 
     return this.http.get(url, {
       headers: new HttpHeaders({
