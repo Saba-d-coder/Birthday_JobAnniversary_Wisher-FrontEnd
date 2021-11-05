@@ -1,9 +1,10 @@
 <mat-card class="card">
   <mat-card-title-group>
     <mat-card-title>
-      <p>Request {{ request?.requestID }}</p>
+      <p>Request ID: {{ request?.requestID }}</p>
     </mat-card-title>
-    <mat-card-subtitle>
+
+    <mat-card-subtitle *ngIf="adminRequestCard">
       <p>User ID: {{ request?.userID }}</p>
     </mat-card-subtitle>
 
@@ -13,14 +14,17 @@
     </div>
 
     <ng-template #showUserRequestStatus>
-      <div id="statusDiv" class="approved">STATUS: {{ request?.status }}</div>
+      <p id="statusDiv" [classList]="request?.status">{{ request?.status }}</p>
     </ng-template>
 
-    <div></div>
   </mat-card-title-group>
 
   <mat-card-content>
-    <p>From Team: {{ request?.currentTeamID }}</p>
-    <p>To Team: {{ request?.newTeamID }}</p>
+    <p *ngIf="request.currentTeamID==0 else elseBlock">
+      Request to join the team: {{request.newTeamID}}
+    </p>
+    <ng-template #elseBlock>
+      Request to change the team from: {{request.currentTeamID}} to :{{request.newTeamID}}
+    </ng-template>
   </mat-card-content>
 </mat-card>

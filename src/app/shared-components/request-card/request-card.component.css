@@ -7,6 +7,7 @@
   height: 40px;
   background-color: rgb(252, 182, 196);
   border-radius: 3px;
+  margin: 0 1em;
 }
 
 .mat-btn:disabled {
@@ -19,14 +20,21 @@
   border: none;
 }
 
-.pending {
-  background-color: yellow;
+#statusDiv {
+  text-align: center;
+  width: 100px;
+  height: 2em;
+  font-size: 18px;
 }
 
-.approved {
-  background-color: greenyellow;
+.PENDING {
+  color: rgb(209, 209, 28);
 }
 
-.declined {
-  background-color: grey;
+.APPROVED {
+  color: green;
+}
+
+.DECLINED {
+  color: red;
 }

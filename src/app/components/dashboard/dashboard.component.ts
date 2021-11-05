@@ -20,9 +20,6 @@ export class DashboardComponent implements OnInit {
   isAdmin: boolean = false;
   inTeam: boolean = false;
   index: number = 0;
-  sub!: Subscription | undefined;
-  teamDetails!: Team;
-  teamMembers: User[] = [];
   loading: boolean = false;
   errormessage: string = '';
   error: boolean = false;
@@ -30,15 +27,18 @@ export class DashboardComponent implements OnInit {
 
   // to store counts of events
   eventCounts = new Map();
-
-  adminRequests: any[] = [];
-  userRequests: any[] = [];
-  adminRequestsSub: Subscription | undefined;
-  userRequestsSub: Subscription | undefined;
-
   // to store count of requests
   adminRequestCount: number = 0;
   userRequestCount: number = 0;
+
+  teamDetails!: Team;
+  adminRequests: any[] = [];
+  userRequests: any[] = [];
+  teams: any[] = [];
+
+  sub!: Subscription | undefined;
+  adminRequestsSub: Subscription | undefined;
+  userRequestsSub: Subscription | undefined;
 
   constructor(
     private userService: UserService,
@@ -50,20 +50,20 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // getting user's role and
+    // getting user's role and checking if they are in a team or not
     this.isAdmin = this.userService.isAdmin();
     this.inTeam = this.userService.isInTeam();
     this.getTeamDetails();
     this.getAdminRequests();
     this.getUserRequests();
+    this.getAllTeams();
   }
 
-  // this method is called when notification-tab component emits the event
+  //#region these methods are called when notification-tab component emits the event
   setEventCount(data: any) {
     this.eventCounts = data;
   }
 
-  // this method is called when notification-tab component emits the event
   setAdminRequestCount(data: any) {
     this.adminRequestCount = data;
   }
@@ -71,6 +71,8 @@ export class DashboardComponent implements OnInit {
   setUserRequestCount(data: any) {
     this.userRequestCount = data;
   }
+
+  //#endregion
 
   openDialog() {
     this.dialog.open(TeamSettingsComponent, {
@@ -83,6 +85,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getTeamDetails() {
+    if (!this.inTeam) return;
     this.loading = true;
     this.sub = this.teamService.getTeamDetails().subscribe({
       next: (response) => {
@@ -102,8 +105,8 @@ export class DashboardComponent implements OnInit {
               window.location.reload(),
                 alert('Auth Token Error. Please Login Again');
             });
-          this.loading = false;
         }
+        this.loading = false;
         this.error = true;
         this.errormessage = err.error;
         this.openSnackBar(err.error);
@@ -112,10 +115,8 @@ export class DashboardComponent implements OnInit {
   }
 
   getAdminRequests() {
-    console.log();
-    if (!this.userService.isAdmin()) return;
+    if (!this.isAdmin) return;
 
-    this.loading = true;
     this.adminRequestsSub = this.adminService
       .getAllPendingRequests()
       .subscribe({
@@ -123,13 +124,6 @@ export class DashboardComponent implements OnInit {
           if (response.status == 'success') {
             this.adminRequests = response.data;
             this.adminRequestCount = this.adminRequests.length;
-            this.loading = false;
-            //might want to remove loading and error
-          } else {
-            this.error = true;
-            this.errormessage = response.message;
-            this.openSnackBar(response.message);
-            this.loading = false;
           }
         },
         error: (err) => {
@@ -143,7 +137,6 @@ export class DashboardComponent implements OnInit {
                 window.location.reload(),
                   alert('Auth Token Error. Please Login Again');
               });
-            this.loading = false;
           }
           this.error = true;
           this.errormessage = err.error;
@@ -153,21 +146,11 @@ export class DashboardComponent implements OnInit {
   }
 
   getUserRequests() {
-    console.log();
-
-    this.loading = true;
     this.adminRequestsSub = this.userService.getAllUserRequests().subscribe({
       next: (response) => {
         if (response.status == 'success') {
           this.userRequests = response.data;
           this.userRequestCount = this.userRequests.length;
-          this.loading = false;
-          //might want to remove loading and error
-        } else {
-          this.error = true;
-          this.errormessage = response.message;
-          this.openSnackBar(response.message);
-          this.loading = false;
         }
       },
       error: (err) => {
@@ -181,11 +164,24 @@ export class DashboardComponent implements OnInit {
               window.location.reload(),
                 alert('Auth Token Error. Please Login Again');
             });
-          this.loading = false;
         }
         this.error = true;
         this.errormessage = err.error;
         this.openSnackBar(err.error);
+      },
+    });
+  }
+
+  getAllTeams() {
+    this.sub = this.teamService.getAllTeams().subscribe({
+      next: (response: any) => {
+        if (response?.get('allTeams').status == 'success') {
+          this.teams = response.get('allTeams').teamMap;
+        }
+      },
+      error: (err) => {
+        this.openSnackBar(err.error);
+        console.log(err.error);
       },
     });
   }

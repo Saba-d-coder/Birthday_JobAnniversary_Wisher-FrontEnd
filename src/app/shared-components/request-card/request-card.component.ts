@@ -14,7 +14,7 @@ export class RequestCardComponent implements OnInit {
   approveSub: Subscription | undefined;
   declineSub: Subscription | undefined;
 
-  @Input() request?: Request;
+  @Input() request!: Request;
   @Input() adminRequestCard: boolean = false;
 
   @Output() refreshRequests = new EventEmitter();
@@ -24,24 +24,7 @@ export class RequestCardComponent implements OnInit {
     private _snackBar: MatSnackBar
   ) {}
 
-  ngOnInit(): void {
-    if (this.adminRequestCard) return;
-
-    var status = this.request?.status;
-    var statusDiv = document.getElementById('statusDiv');
-    switch (status) {
-      case 'PENDING':
-        statusDiv?.classList.add('pending');
-        break;
-      case 'APPROVED':
-        statusDiv?.classList.add('approved');
-        break;
-      case 'DECLINED':
-        console.log(statusDiv);
-        statusDiv?.classList.add('declined');
-        break;
-    }
-  }
+  ngOnInit(): void {}
 
   approveRequest(): void {
     this.approveSub = this.adminService
@@ -51,8 +34,6 @@ export class RequestCardComponent implements OnInit {
           if (response.status == 'success') {
             this.openSnackBar(response.message);
             this.refreshRequests.emit('Refresh requests');
-          } else {
-            // this.openSnackBar(response.message);
           }
         },
         error: (err) => this.openSnackBar(err.error.message),
@@ -67,8 +48,6 @@ export class RequestCardComponent implements OnInit {
           if (response.status == 'success') {
             this.openSnackBar(response.message);
             this.refreshRequests.emit('Refresh requests');
-          } else {
-            // this.openSnackBar(response.message);
           }
         },
         error: (err) => this.openSnackBar(err.error.message),

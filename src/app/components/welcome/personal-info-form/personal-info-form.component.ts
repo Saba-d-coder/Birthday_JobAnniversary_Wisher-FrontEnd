@@ -47,9 +47,8 @@ export class PersonalInfoFormComponent implements OnInit {
     this.loading = true;
     this.sub = this.teamService.getAllTeams().subscribe({
       next: (response: any) => {
-        if (response.status == 'success') {
-          console.log(response.data);
-          this.teams = response.data;
+        if (response?.get('allTeams').status == 'success') {
+          this.teams = response.get('allTeams').data;
           this.loading = false;
         }
       },
