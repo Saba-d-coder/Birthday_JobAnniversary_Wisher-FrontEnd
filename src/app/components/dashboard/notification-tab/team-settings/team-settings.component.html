@@ -9,6 +9,7 @@
     <div class="request-form">
         <form [formGroup]="teamRequest" ngNativeValidate (ngSubmit)="submit()">
             <br>
+            <label for="teams">Select a Team: </label>
             <select name="teams" id="teams" formControlName="teamID" required>
                 <option selected="true" disabled='true'>Select Team</option>
                 <option *ngFor="let team of teams" [ngValue]="team.teamID" [disabled]='team.teamID==currentTeamID'>

@@ -19,6 +19,7 @@ export class AdminService {
   }
 
   getAllPendingRequests(userID: number): Observable<any> {
+    this.userService.updateCurrentUser();
     return this.http.get('/api/admin/' + userID + '/requests/pending', {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.userService.currentUser?.token,
@@ -27,9 +28,10 @@ export class AdminService {
   }
 
   approveRequest(requestID: number): Observable<any> {
-    var url: string = 'api/admin/requests/' + requestID + '/approve';
+    this.userService.updateCurrentUser();
+    var url: string = 'api/admin/requests/approve';
 
-    return this.http.get(url, {
+    return this.http.post(url, requestID, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.userService.currentUser?.token,
       }),
@@ -37,9 +39,21 @@ export class AdminService {
   }
 
   declineRequest(requestID: number): Observable<any> {
-    var url: string = 'api/admin/requests/' + requestID + '/decline';
+    this.userService.updateCurrentUser();
+    var url: string = 'api/admin/requests/decline';
 
-    return this.http.get(url, {
+    return this.http.post(url, requestID, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.userService.currentUser?.token,
+      }),
+    });
+  }
+
+  removeTeamMember(id: number): Observable<any> {
+    this.userService.updateCurrentUser();
+    var url: string = 'api/admin/users/removeFromTeam';
+
+    return this.http.post(url, id, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.userService.currentUser?.token,
       }),

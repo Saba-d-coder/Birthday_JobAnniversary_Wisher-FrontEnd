@@ -13,7 +13,6 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  // viewchild is just like DOM in JS
   @ViewChild(MatMenuTrigger) trigger!: MatMenuTrigger;
   toggleMenu() {
     this.trigger.openMenu();
@@ -61,14 +60,11 @@ export class HeaderComponent implements OnInit {
           JSON.stringify({ isLoggedIn: false })
         );
 
-        // navigating to welcome page of successful logout also sending loading state
-        // (check welcome component constructor for details)
         this.router
           .navigate(['/welcome'], {
             state: { loading: true },
             replaceUrl: true,
           })
-          // after navigating to welcome page performing a reload, coz tabs load completely then
           .then(() => window.location.reload());
       },
       error: (err) => this.openSnackBar(err.error.message),

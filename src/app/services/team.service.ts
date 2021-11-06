@@ -79,4 +79,32 @@ export class TeamService {
         })
       );
   }
+
+  getAllTeamsData() {
+    this.userService.updateCurrentUser();
+    return this.http
+      .get('/api/teams/data', {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.userService.currentUser?.token,
+        }),
+      })
+      .pipe(
+        map((response: any) => {
+          return response;
+        })
+      );
+  }
+
+  requestToJoinTeam(userID: number, teamID: number) {
+    this.userService.updateCurrentUser();
+    return this.http.post(
+      '/api/users/' + userID + '/teamChangeRequest/' + teamID,
+      null,
+      {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.userService.currentUser?.token,
+        }),
+      }
+    );
+  }
 }

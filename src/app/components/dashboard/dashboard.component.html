@@ -13,11 +13,9 @@
       <!-- #region side nav options -->
       <mat-sidenav mode="side" opened class="sidenav">
         <mat-action-list>
-          <!-- #region Team related notifications -->
+          <!-- #region Events notifications -->
           <!-- show notifications and team options only when user is in a team -->
           <div>
-
-            <!-- #region Notifications -->
             <p class="sidenav-title">&nbsp; Notifications <mat-icon>notifications_active</mat-icon>
             </p>
             <mat-divider></mat-divider>
@@ -33,7 +31,7 @@
             <!-- #endregion -->
 
             <!-- #region Team Related -->
-            <p class="sidenav-title">&nbsp; Team</p>
+            <p class="sidenav-title">&nbsp; Team </p>
 
             <div *ngIf="inTeam">
               <button mat-list-item (click)="index = 2"
@@ -43,10 +41,9 @@
 
             <!-- #endregion -->
           </div>
-          <!-- #endregion -->
 
           <!-- #region Your Account -->
-          <p class="sidenav-title">&nbsp; Your Account</p>
+          <p class="sidenav-title">&nbsp; Your Account </p>
 
           <button mat-list-item (click)="index = 3" [style.color]="index==3?'coral':'black'">
             Team Change Requests ({{ userRequestCount }})

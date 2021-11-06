@@ -32,14 +32,14 @@ hr {
 
 .spinner .mat-progress-spinner circle,
 .mat-spinner circle {
-  stroke: crimson;
+  stroke: rgb(250, 202, 185);
 }
 
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {
   scrollbar-width: auto;
-  scrollbar-color: crimson;
+  scrollbar-color: rgb(250, 202, 185);
 }
 
 /* Chrome, Edge, and Safari */
@@ -48,7 +48,7 @@ hr {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: crimson;
+  background-color: rgb(250, 202, 185);
   border-radius: 10px;
 }
 

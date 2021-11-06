@@ -14,8 +14,6 @@ export class UserProfileComponent implements OnInit {
   title = 'Your Profile';
   sub!: Subscription | undefined;
   loading: boolean = false;
-  errormessage: string = '';
-  error: boolean = false;
   userDetails!: User;
 
   constructor(

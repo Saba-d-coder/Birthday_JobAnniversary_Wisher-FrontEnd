@@ -21,8 +21,6 @@ export class DashboardComponent implements OnInit {
   inTeam: boolean = false;
   index: number = 0;
   loading: boolean = false;
-  errormessage: string = '';
-  error: boolean = false;
   panelOpenState = false;
 
   // to store counts of events
@@ -49,7 +47,7 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // getting user's role and checking if they are in a team or not
+    // getting user's role and checking if the user is in a team or not
     this.isAdmin = this.userService.isAdmin();
     this.inTeam = this.userService.isInTeam();
     this.getTeamDetails();
@@ -73,8 +71,14 @@ export class DashboardComponent implements OnInit {
   //#endregion
 
   openDialog() {
-    this.dialog.open(TeamSettingsComponent, {
+    const dialogRef = this.dialog.open(TeamSettingsComponent, {
       height: '40%',
+      width: '30%',
+    });
+    dialogRef.afterClosed().subscribe((reload) => {
+      if (reload) {
+        window.location.reload();
+      }
     });
   }
 
@@ -101,8 +105,6 @@ export class DashboardComponent implements OnInit {
             });
         }
         this.loading = false;
-        this.error = true;
-        this.errormessage = err.error;
         this.openSnackBar(err.error);
       },
     });
@@ -134,8 +136,6 @@ export class DashboardComponent implements OnInit {
                   alert('Auth Token Error. Please Login Again');
               });
           }
-          this.error = true;
-          this.errormessage = err.error;
           this.openSnackBar(err.error);
         },
       });
@@ -161,8 +161,6 @@ export class DashboardComponent implements OnInit {
                 alert('Auth Token Error. Please Login Again');
             });
         }
-        this.error = true;
-        this.errormessage = err.error;
         this.openSnackBar(err.error);
       },
     });

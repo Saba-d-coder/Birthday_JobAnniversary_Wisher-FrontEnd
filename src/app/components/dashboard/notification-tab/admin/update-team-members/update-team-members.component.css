@@ -1,0 +1,61 @@
+#team-data-title {
+  text-align: center;
+  font-size: large;
+}
+
+.no-teams-message,
+#no-member-message {
+  text-align: center;
+  padding: 2em 0;
+}
+
+.panel-title {
+  padding-top: 3px;
+  font-size: 16px;
+}
+
+.teams {
+  padding: 0.5em 1em;
+}
+
+.table-container {
+  height: 200px;
+  overflow-y: scroll;
+}
+
+table {
+  margin: 0;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th {
+  padding: 5px 10px;
+  text-align: left;
+  background-color: rgb(247, 217, 206);
+  border-top: none;
+  position: sticky;
+  top: 0px;
+}
+
+td {
+  width: 33%;
+  padding-top: 1em;
+  padding-left: 10px;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  text-align: center;
+}
+
+.disabledBtn {
+  color: rgb(216, 214, 214);
+  cursor: not-allowed;
+}
+
+.enabledBtn:hover {
+  color: coral;
+  cursor: pointer !important;
+}

@@ -1,5 +1,7 @@
 <br>
-<div *ngIf="requests.length == 0; else showRequests">No requests to show</div>
+<div *ngIf="requests.length == 0; else showRequests">
+    <h1 class="no-requests-message">No requests to show</h1>
+</div>
 
 <ng-template #showRequests>
     <div class="cards">

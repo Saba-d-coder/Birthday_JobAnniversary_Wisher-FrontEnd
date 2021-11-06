@@ -7,9 +7,10 @@
     <br>
     <div *ngIf="index==0; else tab2">
       <div *ngIf='birthdays.length==0 else showBirthdays'>
-        No events to show
+        <h1 class="no-event-message"> No events to show </h1>
       </div>
 
+      <!-- #region birthday events cards -->
       <ng-template #showBirthdays>
         <div class="event-cards">
           <div *ngFor="let birthday of birthdays" class="team-birthdays">
@@ -19,8 +20,8 @@
             <br>
           </div>
         </div>
-
       </ng-template>
+      <!-- #endregion -->
     </div>
   </div>
 </ng-template>
@@ -28,9 +29,10 @@
 
 <ng-template #tab2>
   <div *ngIf='anniversaries.length==0 else showAnniversaries'>
-    No events to show
+    <h1 class="no-event-message"> No events to show </h1>
   </div>
 
+  <!-- #region anniversary events card -->
   <ng-template #showAnniversaries>
     <div class="event-cards">
       <div *ngFor="let anniversary of anniversaries" class="team-anniversaries">
@@ -42,5 +44,6 @@
       <br>
     </div>
   </ng-template>
+  <!-- #endregion -->
 
 </ng-template>

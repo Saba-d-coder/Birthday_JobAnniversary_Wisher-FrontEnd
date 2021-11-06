@@ -3,9 +3,9 @@
 </div>
 <ng-template #welcome>
 
-    <!-- Welcome container consisting of welcome description and login signup forms -->
+    <!-- #region Welcome container consisting of welcome description and login signup forms -->
     <div class="welcome-container">
-        <!-- Left side layout -->
+        <!--#region Left side layout -->
 
         <div class="app-details">
             <h1 id="welcome-title">Welcome to JustnOrg</h1>
@@ -14,9 +14,9 @@
                 It also allows you to send wishes to the employees whose Birthday or Job Anniversaries are next week.
             </p>
         </div>
+        <!-- #endregion -->
 
-        <!-- Login and signup tabs -->
-        <!-- Login and Signup components are in different folders inside welcome folder -->
+        <!--#region Login and signup tabs -->
         <div class="login-signup">
             <mat-tab-group mat-stretch-tabs>
                 <!-- #region signin -->
@@ -36,6 +36,8 @@
                 <!-- #endregion -->
             </mat-tab-group>
         </div>
+        <!-- #endregion -->
     </div>
+    <!-- #endregion -->
 
 </ng-template>

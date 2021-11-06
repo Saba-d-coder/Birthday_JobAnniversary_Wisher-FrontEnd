@@ -14,19 +14,17 @@ import { UserService } from 'src/app/services/user.service';
 export class NotificationTabComponent implements OnInit {
   @Input() teamDetail!: Team;
   @Input() index: number = 1;
-  @Output() indexChange = new EventEmitter();
-
-  // this event emits the data received from event notification component to dashboard component
-  @Output() eventsLengthRetrieved = new EventEmitter();
-  @Output() adminRequestsLengthRetrieved = new EventEmitter();
-  @Output() userRequestsLengthRetrieved = new EventEmitter();
-
   @Input() adminRequests: any[] = [];
   @Input() userRequests: any[] = [];
 
+  //#region these events are emited to the dashboard component
+  @Output() indexChange = new EventEmitter();
+  @Output() eventsLengthRetrieved = new EventEmitter();
+  @Output() adminRequestsLengthRetrieved = new EventEmitter();
+  @Output() userRequestsLengthRetrieved = new EventEmitter();
+  //#endregion
+
   teams: any[] = [];
-  errormessage: string = '';
-  error: boolean = false;
   sub!: Subscription | undefined;
 
   constructor(
@@ -43,12 +41,11 @@ export class NotificationTabComponent implements OnInit {
     this.indexChange.emit(this.index);
   }
 
-  // this method is called when event-notification component emits the event
+  //#region these methods are called when event-notification component emits the event
   emitEventLengthsToSideNav(data: any) {
     this.eventsLengthRetrieved.emit(data);
   }
 
-  // this method is called when admin-requests component emits the event
   emitAdminRequestsLengthToSideNav(data: number) {
     this.adminRequestsLengthRetrieved.emit(data);
   }
@@ -56,6 +53,7 @@ export class NotificationTabComponent implements OnInit {
   emitUserRequestsLengthToSideNav(data: any) {
     this.userRequestsLengthRetrieved.emit(data);
   }
+  //#endregion
 
   getAllTeams() {
     this.sub = this.teamService.getAllTeams().subscribe({

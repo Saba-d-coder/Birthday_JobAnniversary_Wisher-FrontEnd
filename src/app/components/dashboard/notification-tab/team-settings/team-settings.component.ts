@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -14,6 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class TeamSettingsComponent implements OnInit {
   currentTeamID!: number;
+  userID!: number;
   sub!: Subscription | undefined;
   loading: boolean = false;
   teams: any[] = [];
@@ -24,6 +25,7 @@ export class TeamSettingsComponent implements OnInit {
   // To inject data passed from dashboard sidenav
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<TeamSettingsComponent>,
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
@@ -33,9 +35,10 @@ export class TeamSettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllTeams();
-    console.log(this.data);
     this.userService.updateCurrentUser();
-    this.currentTeamID = this.userService.currentUser?.user['teamID'];
+    var user = this.userService.currentUser?.user;
+    this.currentTeamID = user?.teamID;
+    this.userID = user?.userID;
   }
 
   getAllTeams() {
@@ -56,17 +59,24 @@ export class TeamSettingsComponent implements OnInit {
   }
 
   submit(): void {
-    // this.sub = this.userService.updateUserInfo(this.teamRequest.value).subscribe({
-    //   next: (response: any) => {
-    //     if (response.status == 'success') {
-    //       this.openSnackBar(response.message);
-    //       this.router.navigate(['/dashboard']);
-    //     }
-    //   },
-    //   error: (err) => {
-    //     this.openSnackBar(err.error), console.log(err.error);
-    //   },
-    // });
+    this.loading = true;
+    this.sub = this.teamService
+      .requestToJoinTeam(this.userID, this.teamRequest.value.teamID)
+      .subscribe({
+        next: (response: any) => {
+          if (response.status == 'success') {
+            this.loading = false;
+            this.dialogRef.close({ reload: true });
+            this.openSnackBar(response.message);
+          }
+        },
+        error: (err) => {
+          this.loading = true;
+          this.dialogRef.close();
+          this.openSnackBar(err.error);
+          console.log(err.error);
+        },
+      });
   }
 
   openSnackBar(message: string) {
