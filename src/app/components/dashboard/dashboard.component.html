@@ -8,9 +8,8 @@
 
 <ng-template #show>
   <div class="container">
-    <!-- #region side nav container-->
     <mat-sidenav-container class="side-nav-container">
-      <!-- #region side nav options -->
+
       <mat-sidenav mode="side" opened class="sidenav">
         <mat-action-list>
           <!-- #region Events notifications -->
@@ -72,10 +71,9 @@
           <!-- #endregion -->
         </mat-action-list>
       </mat-sidenav>
-      <!-- #endregion -->
+
       <!-- #region nav tab components -->
       <mat-sidenav-content class="sidenav-content">
-        <!-- keeping track of changed index when selecting side nav options -->
         <app-notification-tab [(index)]="index" (eventsLengthRetrieved)="setEventCount($event)"
           [adminRequests]="adminRequests" [userRequests]="userRequests"
           (adminRequestsLengthRetrieved)="setAdminRequestCount($event)"
@@ -84,6 +82,5 @@
       </mat-sidenav-content>
       <!-- #endregion -->
     </mat-sidenav-container>
-    <!-- #endregion -->
   </div>
 </ng-template>
