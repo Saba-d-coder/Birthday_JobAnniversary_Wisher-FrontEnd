@@ -8,6 +8,7 @@ import { User } from 'src/app/models/user';
 import { AdminService } from 'src/app/services/admin.service';
 import { TeamService } from 'src/app/services/team.service';
 import { UserService } from 'src/app/services/user.service';
+import { AddTeamComponent } from './notification-tab/admin/add-team/add-team.component';
 import { TeamSettingsComponent } from './notification-tab/team-settings/team-settings.component';
 
 @Component({
@@ -163,6 +164,15 @@ export class DashboardComponent implements OnInit {
         }
         this.openSnackBar(err.error);
       },
+    });
+  }
+
+  openNewTeamDialog() {
+    const dialogRef = this.dialog.open(AddTeamComponent);
+    dialogRef.afterClosed().subscribe((reload) => {
+      if (reload) {
+        window.location.reload();
+      }
     });
   }
 

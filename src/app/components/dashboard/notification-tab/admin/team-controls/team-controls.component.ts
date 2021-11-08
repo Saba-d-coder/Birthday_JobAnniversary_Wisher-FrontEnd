@@ -8,7 +8,7 @@ import { TeamService } from 'src/app/services/team.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-update-team-members',
+  selector: 'app-team-controls',
   templateUrl: './team-controls.component.html',
   styleUrls: ['./team-controls.component.css'],
 })
@@ -101,7 +101,19 @@ export class TeamControlsComponent implements OnInit {
   }
 
   deleteTeam(teamID: any) {
-    console.log('deleting team: ', teamID);
-    this.adminService.deleteTeam(teamID);
+    this.adminService.deleteTeam(teamID).subscribe({
+      next: (response: any) => {
+        if (response.status == 'success') {
+          this.loading = false;
+          this.ngOnInit();
+          this.openSnackBar(response.message);
+        }
+      },
+      error: (err) => {
+        this.loading = true;
+        this.openSnackBar(err.error);
+        console.log(err.error);
+      },
+    });
   }
 }

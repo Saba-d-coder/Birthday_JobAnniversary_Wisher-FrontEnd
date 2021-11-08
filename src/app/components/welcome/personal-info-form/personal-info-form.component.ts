@@ -15,7 +15,7 @@ import { UserService } from 'src/app/services/user.service';
 export class PersonalInfoFormComponent implements OnInit {
   sub!: Subscription | undefined;
   loading: boolean = false;
-  currentTeamID!: string;
+  currentTeamID!: number;
   teams: Team[] = [];
 
   // min age is 20

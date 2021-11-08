@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Team } from '../models/team';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -54,6 +55,24 @@ export class AdminService {
     var url: string = 'api/admin/users/removeFromTeam';
 
     return this.http.post(url, id, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.userService.currentUser?.token,
+      }),
+    });
+  }
+
+  createTeam(teamname: string, teamDescription: string): Observable<any> {
+    this.userService.updateCurrentUser();
+    var url: string = 'api/admin/teams/new';
+
+    // Team Id gets overwritten while entering into database
+    let team: Team = {
+      teamID: -99,
+      teamname: teamname,
+      description: teamDescription,
+    };
+
+    return this.http.post(url, team, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.userService.currentUser?.token,
       }),
