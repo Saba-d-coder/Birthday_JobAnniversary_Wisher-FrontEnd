@@ -7,13 +7,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ConfirmTeamDeleteComponent } from './confirm-team-delete/confirm-team-delete.component';
 
 @NgModule({
-  declarations: [AddTeamComponent, TeamControlsComponent],
-  providers: [
-    { provide: MAT_DIALOG_DATA, useValue: {} },
-    { provide: MatDialogRef, useValue: {} },
+  declarations: [
+    AddTeamComponent,
+    TeamControlsComponent,
+    ConfirmTeamDeleteComponent,
   ],
   imports: [
     CommonModule,

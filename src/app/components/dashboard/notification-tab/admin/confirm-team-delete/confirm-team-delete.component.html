@@ -1,0 +1,35 @@
+<div *ngIf="loading; else show">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>
+
+<ng-template #show>
+  <h1>Delete Team</h1>
+
+  <div class="confirmation-form">
+    <p>This action <b>cannot</b> be undone</p>
+    <p>
+      Please <b>confirm</b> you want to
+      <b>delete</b>
+      {{ data.teamname }}
+    </p>
+
+    <form [formGroup]="confirmationForm" ngNativeValidate (ngSubmit)="submit()">
+      <br />
+      <label for="confirmationText">
+        Type <i><b>delete</b></i> to confirm.</label
+      >
+      <br />
+      <input
+        id="confirmationText"
+        type="text"
+        formControlName="confirmationText"
+      />
+      <br />
+
+      <br />
+      <button [disabled]="confirmationForm.invalid" type="submit">
+        I understand the consequences, delete this team
+      </button>
+    </form>
+  </div>
+</ng-template>

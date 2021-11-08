@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
@@ -14,11 +14,12 @@ export class AddTeamComponent implements OnInit {
   sub!: Subscription | undefined;
   loading: boolean = false;
   createTeamForm = this.formBuilder.group({
-    teamName: null,
-    teamDescription: null,
+    teamName: [null, Validators.required],
+    teamDescription: [null, Validators.required],
   });
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<AddTeamComponent>,
     private formBuilder: FormBuilder,
     private adminService: AdminService,

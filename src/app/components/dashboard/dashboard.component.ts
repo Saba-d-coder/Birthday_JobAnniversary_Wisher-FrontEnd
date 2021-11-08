@@ -77,7 +77,7 @@ export class DashboardComponent implements OnInit {
       width: '30%',
     });
     dialogRef.afterClosed().subscribe((reload) => {
-      if (reload) {
+      if (reload === true) {
         window.location.reload();
       }
     });
@@ -168,9 +168,12 @@ export class DashboardComponent implements OnInit {
   }
 
   openNewTeamDialog() {
-    const dialogRef = this.dialog.open(AddTeamComponent);
+    const dialogRef = this.dialog.open(AddTeamComponent, {
+      height: '40%',
+      width: '30%',
+    });
     dialogRef.afterClosed().subscribe((reload) => {
-      if (reload) {
+      if (reload === true) {
         window.location.reload();
       }
     });

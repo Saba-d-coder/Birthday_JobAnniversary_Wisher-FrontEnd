@@ -8,16 +8,18 @@
   <div class="request-form">
     <form [formGroup]="createTeamForm" ngNativeValidate (ngSubmit)="submit()">
       <br />
-      <label for="teamName">Team name: </label>
+      <label for="teamName">Team name</label>
+      <br />
       <input id="teamName" type="text" formControlName="teamName" />
       <br />
-      <label for="teamDescription">Description: </label>
+      <label for="teamDescription">Description</label>
+      <br />
       <textarea
         class="teamDescription"
         formControlName="teamDescription"
       ></textarea>
       <br />
-      <button type="submit">Submit</button>
+      <button [disabled]="createTeamForm.invalid" type="submit">Submit</button>
     </form>
   </div>
 </ng-template>

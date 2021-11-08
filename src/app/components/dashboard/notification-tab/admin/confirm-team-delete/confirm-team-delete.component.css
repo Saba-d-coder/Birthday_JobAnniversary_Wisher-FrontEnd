@@ -1,0 +1,13 @@
+.confirmation-form button:enabled {
+  color: white;
+  background-color: rgb(204, 39, 39);
+  border-color: rgb(204, 39, 39);
+}
+
+.confirmation-form button:hover:enabled {
+  cursor: pointer;
+  transition: all ease-in-out 0.2s;
+  color: rgb(204, 39, 39);
+  background-color: white;
+  border-color: white;
+}

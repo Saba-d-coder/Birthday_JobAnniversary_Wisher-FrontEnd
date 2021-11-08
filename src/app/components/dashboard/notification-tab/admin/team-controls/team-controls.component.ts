@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -6,6 +7,7 @@ import { Team } from 'src/app/models/team';
 import { AdminService } from 'src/app/services/admin.service';
 import { TeamService } from 'src/app/services/team.service';
 import { UserService } from 'src/app/services/user.service';
+import { ConfirmTeamDeleteComponent } from '../confirm-team-delete/confirm-team-delete.component';
 
 @Component({
   selector: 'app-team-controls',
@@ -23,6 +25,7 @@ export class TeamControlsComponent implements OnInit {
   constructor(
     private router: Router,
     private teamService: TeamService,
+    public dialog: MatDialog,
     private adminService: AdminService,
     private _snackBar: MatSnackBar,
     private userService: UserService
@@ -100,7 +103,24 @@ export class TeamControlsComponent implements OnInit {
     });
   }
 
-  deleteTeam(teamID: any) {
+  deleteTeam(team: any) {
+    var confirmation: boolean = false;
+
+    const dialogRef = this.dialog.open(ConfirmTeamDeleteComponent, {
+      height: '40%',
+      width: '30%',
+      data: team,
+    });
+    dialogRef.afterClosed().subscribe((data: any) => {
+      if (data.confirmation === true) {
+        this.deleteTeamConfirmed(team.teamID);
+      } else {
+        this.openSnackBar('Confirmation failed, please try again!');
+      }
+    });
+  }
+
+  deleteTeamConfirmed(teamID: number): void {
     this.adminService.deleteTeam(teamID).subscribe({
       next: (response: any) => {
         if (response.status == 'success') {
