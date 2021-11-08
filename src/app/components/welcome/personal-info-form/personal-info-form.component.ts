@@ -73,6 +73,13 @@ export class PersonalInfoFormComponent implements OnInit {
     this.sub = this.userService.updateUserInfo(this.userData.value).subscribe({
       next: (response: any) => {
         if (response.status == 'success') {
+          localStorage.setItem(
+            'currentUser',
+            JSON.stringify({
+              token: this.userService.currentUser?.token,
+              user: response.data,
+            })
+          );
           this.openSnackBar(response.message);
           this.router.navigate(['/dashboard']);
         }

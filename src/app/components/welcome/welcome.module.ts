@@ -13,6 +13,7 @@ import { PersonalInfoFormComponent } from './personal-info-form/personal-info-fo
 import { DashboardModule } from '../dashboard/dashboard.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
+import { FormAccessGuard } from './personal-info-form/form-access-guard.guard';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { UserProfileComponent } from '../user-profile/user-profile.component';
       {
         path: 'form',
         component: PersonalInfoFormComponent,
+        canActivate: [FormAccessGuard],
       },
       {
         path: 'dashboard',

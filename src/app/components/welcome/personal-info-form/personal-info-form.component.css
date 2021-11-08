@@ -1,9 +1,32 @@
-.user-info {
+.info-form {
   margin: auto;
-  padding-top: 2em;
   width: 30%;
+  font-size: 16px;
 }
 
-.info-form {
-  width: 100%;
+#info-form-title {
+  text-align: center;
+}
+
+label {
+  color: coral;
+}
+
+input,
+textarea {
+  margin-top: 2px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+input:focus,
+textarea:focus {
+  outline-color: coral;
+}
+
+.info-form button:hover {
+  cursor: pointer;
+  color: white;
+  background-color: black;
+  border-color: black;
 }

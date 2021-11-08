@@ -7,11 +7,14 @@
 <ng-template #show>
 
     <div class="user-info">
-        <h1>Please fill the details</h1>
+        <br>
+        <h1 id="info-form-title">Please fill the details</h1>
+        <hr>
+        <br>
         <div class="info-form">
             <form [formGroup]="userData" (ngSubmit)="submit()" ngNativeValidate>
 
-                <label for="birthday"> Birth Date* </label>
+                <label for="birthday"> Date of Birth* </label>
                 <br>
                 <input type="date" name="birthday" value="dd-mm-yyyy" formControlName="birthDate"
                     [min]="minDate| date:'yyyy-MM-dd'" [max]="maxBirthDate| date:'yyyy-MM-dd'" required>
@@ -25,8 +28,7 @@
                 <br>
                 <br>
 
-                <label for="teams">Choose a team to join:</label>
-                <br>
+                <label for="teams">Choose a team to join*:</label> <br>
                 <select name="teams" id="teams" formControlName="teamID" required>
                     <option selected="true" disabled='true'>Select Team</option>
                     <option *ngFor="let team of teams" [ngValue]="team.teamID" [disabled]='team.teamID==currentTeamID'>
@@ -49,8 +51,8 @@
 
                 <label for="address"> Address </label>
                 <br>
-                <textarea placeholder="Type your address here" formControlName="address" name="address" rows="5"
-                    cols="50"></textarea>
+                <textarea placeholder="Type your address here" formControlName="address" name="address" rows="8"
+                    cols="40"></textarea>
                 <br>
                 <br>
 

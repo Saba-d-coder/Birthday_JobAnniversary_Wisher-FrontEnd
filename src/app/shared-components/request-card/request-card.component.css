@@ -20,6 +20,10 @@
   border: none;
 }
 
+.mat-btn:nth-child(2):enabled:hover {
+  margin-left: 1.22em;
+}
+
 #statusDiv {
   text-align: center;
   width: 100px;

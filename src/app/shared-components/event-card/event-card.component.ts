@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { TeamSettingsComponent } from 'src/app/components/dashboard/notification-tab/team-settings/team-settings.component';
 import { EmailWishesComponent } from '../email-wishes/email-wishes.component';
 
 @Component({

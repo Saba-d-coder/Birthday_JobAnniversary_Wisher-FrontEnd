@@ -7,3 +7,9 @@
 .no-event-message {
   text-align: center;
 }
+
+@media (min-width: 1250px) and (max-width: 1390px) {
+  .cards {
+    grid-template-columns: repeat(auto-fill, 400px);
+  }
+}

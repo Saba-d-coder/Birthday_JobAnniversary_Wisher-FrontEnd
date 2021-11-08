@@ -12,7 +12,7 @@ import {
 } from '@angular/material/dialog';
 import { EventCardComponent } from './event-card/event-card.component';
 import { EmailWishesComponent } from './email-wishes/email-wishes.component';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
