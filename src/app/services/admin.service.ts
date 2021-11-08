@@ -59,4 +59,15 @@ export class AdminService {
       }),
     });
   }
+
+  deleteTeam(id: number): Observable<any> {
+    this.userService.updateCurrentUser();
+    var url: string = 'api/admin/teams/' + id;
+
+    return this.http.delete(url, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.userService.currentUser?.token,
+      }),
+    });
+  }
 }

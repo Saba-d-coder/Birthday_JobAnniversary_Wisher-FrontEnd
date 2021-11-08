@@ -9,10 +9,10 @@ import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-update-team-members',
-  templateUrl: './update-team-members.component.html',
-  styleUrls: ['./update-team-members.component.css'],
+  templateUrl: './team-controls.component.html',
+  styleUrls: ['./team-controls.component.css'],
 })
-export class UpdateTeamMembersComponent implements OnInit {
+export class TeamControlsComponent implements OnInit {
   sub!: Subscription | undefined;
   teamList: Team[] = [];
   teams: any;
@@ -98,5 +98,10 @@ export class UpdateTeamMembersComponent implements OnInit {
       duration: 1000,
       panelClass: ['snackbar'],
     });
+  }
+
+  deleteTeam(teamID: any) {
+    console.log('deleting team: ', teamID);
+    this.adminService.deleteTeam(teamID);
   }
 }
