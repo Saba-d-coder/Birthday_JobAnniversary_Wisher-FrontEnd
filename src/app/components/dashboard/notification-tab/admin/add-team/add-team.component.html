@@ -1,1 +1,25 @@
-<p>add-team works!</p>
+<div *ngIf="loading; else show">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>
+
+<ng-template #show>
+  <h1>Create Team</h1>
+
+  <div class="request-form">
+    <form [formGroup]="createTeamForm" ngNativeValidate (ngSubmit)="submit()">
+      <br />
+      <label for="teamName">Team name</label>
+      <br />
+      <input id="teamName" type="text" formControlName="teamName" />
+      <br />
+      <label for="teamDescription">Description</label>
+      <br />
+      <textarea
+        class="teamDescription"
+        formControlName="teamDescription"
+      ></textarea>
+      <br />
+      <button [disabled]="createTeamForm.invalid" type="submit">Submit</button>
+    </form>
+  </div>
+</ng-template>

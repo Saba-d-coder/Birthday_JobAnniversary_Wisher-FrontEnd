@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -6,13 +7,14 @@ import { Team } from 'src/app/models/team';
 import { AdminService } from 'src/app/services/admin.service';
 import { TeamService } from 'src/app/services/team.service';
 import { UserService } from 'src/app/services/user.service';
+import { ConfirmTeamDeleteComponent } from '../confirm-team-delete/confirm-team-delete.component';
 
 @Component({
-  selector: 'app-update-team-members',
-  templateUrl: './update-team-members.component.html',
-  styleUrls: ['./update-team-members.component.css'],
+  selector: 'app-team-controls',
+  templateUrl: './team-controls.component.html',
+  styleUrls: ['./team-controls.component.css'],
 })
-export class UpdateTeamMembersComponent implements OnInit {
+export class TeamControlsComponent implements OnInit {
   sub!: Subscription | undefined;
   teamList: Team[] = [];
   teams: any;
@@ -23,6 +25,7 @@ export class UpdateTeamMembersComponent implements OnInit {
   constructor(
     private router: Router,
     private teamService: TeamService,
+    public dialog: MatDialog,
     private adminService: AdminService,
     private _snackBar: MatSnackBar,
     private userService: UserService
@@ -97,6 +100,40 @@ export class UpdateTeamMembersComponent implements OnInit {
     this._snackBar.open(message, '', {
       duration: 1000,
       panelClass: ['snackbar'],
+    });
+  }
+
+  deleteTeam(team: any) {
+    var confirmation: boolean = false;
+
+    const dialogRef = this.dialog.open(ConfirmTeamDeleteComponent, {
+      height: '40%',
+      width: '30%',
+      data: team,
+    });
+    dialogRef.afterClosed().subscribe((data: any) => {
+      if (data.confirmation === true) {
+        this.deleteTeamConfirmed(team.teamID);
+      } else {
+        this.openSnackBar('Confirmation failed, please try again!');
+      }
+    });
+  }
+
+  deleteTeamConfirmed(teamID: number): void {
+    this.adminService.deleteTeam(teamID).subscribe({
+      next: (response: any) => {
+        if (response.status == 'success') {
+          this.loading = false;
+          this.ngOnInit();
+          this.openSnackBar(response.message);
+        }
+      },
+      error: (err) => {
+        this.loading = true;
+        this.openSnackBar(err.error);
+        console.log(err.error);
+      },
     });
   }
 }

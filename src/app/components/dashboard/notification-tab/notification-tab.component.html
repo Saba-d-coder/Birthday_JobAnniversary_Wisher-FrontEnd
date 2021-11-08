@@ -1,14 +1,25 @@
-<mat-tab-group [(selectedIndex)]="index" class="header-less-tabs" animationDuration="0ms" name="index">
+<mat-tab-group
+  [(selectedIndex)]="index"
+  class="header-less-tabs"
+  animationDuration="0ms"
+  name="index"
+>
   <!-- #region tab components -->
   <mat-tab>
     <ng-template matTabContent>
-      <app-event-notification [index]="index" (eventsLength)="emitEventLengthsToSideNav($event)">
+      <app-event-notification
+        [index]="index"
+        (eventsLength)="emitEventLengthsToSideNav($event)"
+      >
       </app-event-notification>
     </ng-template>
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-event-notification [index]="index" (eventsLength)="emitEventLengthsToSideNav($event)">
+      <app-event-notification
+        [index]="index"
+        (eventsLength)="emitEventLengthsToSideNav($event)"
+      >
       </app-event-notification>
     </ng-template>
   </mat-tab>
@@ -19,25 +30,26 @@
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-requests-notification [requests]="userRequests" [adminRequest]="false">
+      <app-requests-notification
+        [requests]="userRequests"
+        [adminRequest]="false"
+      >
       </app-requests-notification>
     </ng-template>
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-requests-notification [requests]="adminRequests" [adminRequest]="true"
-        (adminRequestsLength)="emitAdminRequestsLengthToSideNav($event)">
+      <app-requests-notification
+        [requests]="adminRequests"
+        [adminRequest]="true"
+        (adminRequestsLength)="emitAdminRequestsLengthToSideNav($event)"
+      >
       </app-requests-notification>
     </ng-template>
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-add-team></app-add-team>
-    </ng-template>
-  </mat-tab>
-  <mat-tab>
-    <ng-template matTabContent>
-      <app-update-team-members></app-update-team-members>
+      <app-team-controls></app-team-controls>
     </ng-template>
   </mat-tab>
   <!-- #endregion -->

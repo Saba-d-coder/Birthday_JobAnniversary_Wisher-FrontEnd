@@ -9,42 +9,59 @@
 <ng-template #show>
   <div class="container">
     <mat-sidenav-container class="side-nav-container">
-
       <mat-sidenav mode="side" opened class="sidenav">
         <mat-action-list>
           <!-- #region Events notifications -->
           <!-- show notifications and team options only when user is in a team -->
           <div>
-            <p class="sidenav-title">&nbsp; Notifications <mat-icon>notifications_active</mat-icon>
+            <p class="sidenav-title">
+              &nbsp; Notifications <mat-icon>notifications_active</mat-icon>
             </p>
             <mat-divider></mat-divider>
 
-            <button mat-list-item (click)="index = 0" [style.color]="index==0?'coral':'black'"> Birthdays
-              ({{eventCounts.get('bdayEvents')}})
+            <button
+              mat-list-item
+              (click)="index = 0"
+              [style.color]="index == 0 ? 'coral' : 'black'"
+            >
+              Birthdays ({{ eventCounts.get("bdayEvents") }})
             </button>
 
-            <button mat-list-item (click)="index = 1" [style.color]="index==1?'coral':'black'"> Job Anniversaries
-              ({{eventCounts.get('anniversaryEvents')}})
+            <button
+              mat-list-item
+              (click)="index = 1"
+              [style.color]="index == 1 ? 'coral' : 'black'"
+            >
+              Job Anniversaries ({{ eventCounts.get("anniversaryEvents") }})
             </button>
 
             <!-- #endregion -->
 
             <!-- #region Team Related -->
-            <p class="sidenav-title">&nbsp; Team </p>
+            <p class="sidenav-title">&nbsp; Team</p>
 
             <div *ngIf="inTeam">
-              <button mat-list-item (click)="index = 2"
-                [style.color]="index==2?'coral':'black'">{{teamDetails.teamname}} Team Details</button>
+              <button
+                mat-list-item
+                (click)="index = 2"
+                [style.color]="index == 2 ? 'coral' : 'black'"
+              >
+                {{ teamDetails.teamname }} Team Details
+              </button>
             </div>
-            <button mat-list-item (click)="openDialog()"> Team Change </button>
+            <button mat-list-item (click)="openDialog()">Team Change</button>
 
             <!-- #endregion -->
           </div>
 
           <!-- #region Your Account -->
-          <p class="sidenav-title">&nbsp; Your Account </p>
+          <p class="sidenav-title">&nbsp; Your Account</p>
 
-          <button mat-list-item (click)="index = 3" [style.color]="index==3?'coral':'black'">
+          <button
+            mat-list-item
+            (click)="index = 3"
+            [style.color]="index == 3 ? 'coral' : 'black'"
+          >
             Team Change Requests ({{ userRequestCount }})
           </button>
 
@@ -55,14 +72,23 @@
             <p class="sidenav-title">
               &nbsp; Admin Controls <mat-icon>settings</mat-icon>
             </p>
-            <button mat-list-item (click)="index = 4" [style.color]="index==4?'coral':'black'">
+            <button
+              mat-list-item
+              (click)="index = 4"
+              [style.color]="index == 4 ? 'coral' : 'black'"
+            >
               Requests ({{ adminRequestCount }})
             </button>
-            <button mat-list-item (click)="index = 5" [style.color]="index==5?'coral':'black'">
+            <button mat-list-item (click)="openNewTeamDialog()">
               Add Team
             </button>
-            <button mat-list-item (click)="index = 6" [style.color]="index==6?'coral':'black'">
-              Update Team Members
+
+            <button
+              mat-list-item
+              (click)="index = 5"
+              [style.color]="index == 5 ? 'coral' : 'black'"
+            >
+              Team Controls
             </button>
           </div>
           <!-- #endregion -->
@@ -71,10 +97,15 @@
 
       <!-- #region nav tab components -->
       <mat-sidenav-content class="sidenav-content">
-        <app-notification-tab [(index)]="index" (eventsLengthRetrieved)="setEventCount($event)"
-          [adminRequests]="adminRequests" [userRequests]="userRequests"
+        <app-notification-tab
+          [(index)]="index"
+          (eventsLengthRetrieved)="setEventCount($event)"
+          [adminRequests]="adminRequests"
+          [userRequests]="userRequests"
           (adminRequestsLengthRetrieved)="setAdminRequestCount($event)"
-          (userRequestsLengthRetrieved)="setUserRequestCount($event)" [teamDetail]="teamDetails">
+          (userRequestsLengthRetrieved)="setUserRequestCount($event)"
+          [teamDetail]="teamDetails"
+        >
         </app-notification-tab>
       </mat-sidenav-content>
       <!-- #endregion -->
