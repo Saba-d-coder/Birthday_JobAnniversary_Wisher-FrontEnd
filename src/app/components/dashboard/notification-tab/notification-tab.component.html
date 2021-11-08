@@ -19,13 +19,13 @@
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-requests-notification [teams]='teams' [requests]="userRequests" [adminRequest]="false">
+      <app-requests-notification [requests]="userRequests" [adminRequest]="false">
       </app-requests-notification>
     </ng-template>
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-requests-notification [teams]='teams' [requests]="adminRequests" [adminRequest]="true"
+      <app-requests-notification [requests]="adminRequests" [adminRequest]="true"
         (adminRequestsLength)="emitAdminRequestsLengthToSideNav($event)">
       </app-requests-notification>
     </ng-template>
