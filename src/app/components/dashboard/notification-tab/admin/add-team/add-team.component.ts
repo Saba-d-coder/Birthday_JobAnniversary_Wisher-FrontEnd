@@ -40,6 +40,8 @@ export class AddTeamComponent implements OnInit {
           if (response.status == 'success') {
             this.loading = false;
             this.dialogRef.close({ reload: true });
+
+            window.location.reload();
             this.openSnackBar(response.message);
           }
         },
