@@ -2,9 +2,13 @@
     <form [formGroup]="userAuth" (ngSubmit)="submit()" ngNativeValidate>
         <input type='text' placeholder="Username" formControlName="username" name="userName" required minlength="3" />
         <br><br>
-        <input type='password' placeholder="Password" formControlName="password" name="password" required
-            minlength="6" /> <br><br>
-        <button color="primary" type="submit">Submit</button>
+
+        <input [type]="show ? 'text' : 'password'" placeholder="Password" formControlName="password" name="password"
+            minlength="6" required />
+        <mat-icon (click)="togglePwdVisibility()" class="pwd-toggler">remove_red_eye</mat-icon>
+
+        <br><br>
+        <button class="submit-btn" type="submit">Submit</button>
         <br>
     </form>
 </div>

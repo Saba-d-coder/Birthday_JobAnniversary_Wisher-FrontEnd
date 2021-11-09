@@ -12,8 +12,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PersonalInfoFormComponent } from './personal-info-form/personal-info-form.component';
 import { DashboardModule } from '../dashboard/dashboard.module';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { FormAccessGuard } from './personal-info-form/form-access-guard.guard';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { FormAccessGuard } from './personal-info-form/form-access-guard.guard';
     SharedModule,
     MatProgressSpinnerModule,
     FormsModule,
+    MatFormFieldModule,
     MatTabsModule,
+    MatIconModule,
+    MatInputModule,
     ReactiveFormsModule,
     RouterModule.forChild([
       {

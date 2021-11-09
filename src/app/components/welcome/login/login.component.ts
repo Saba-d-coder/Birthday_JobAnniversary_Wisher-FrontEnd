@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
   sub!: Subscription | undefined;
+  show: boolean = false;
 
   userAuth = this.formBuilder.group({
     username: null,
@@ -26,6 +27,10 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
+  togglePwdVisibility() {
+    this.show = !this.show;
+  }
 
   submit(): void {
     this.sub = this.userService.login(this.userAuth.value).subscribe({

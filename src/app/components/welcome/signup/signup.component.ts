@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignupComponent implements OnInit {
   sub!: Subscription | undefined;
+  show: boolean = false;
 
   userData = this.formBuilder.group({
     username: null,
@@ -29,6 +30,10 @@ export class SignupComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
+  togglePwdVisibility() {
+    this.show = !this.show;
+  }
 
   submit(): void {
     this.sub = this.userService.signup(this.userData.value).subscribe({

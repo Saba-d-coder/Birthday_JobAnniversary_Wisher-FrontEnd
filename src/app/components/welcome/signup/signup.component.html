@@ -1,24 +1,25 @@
 <div class='auth-form'>
     <form [formGroup]="userData" (ngSubmit)="submit()" ngNativeValidate>
-        <input type='text' placeholder="Username" formControlName="username" name="userName" minlength="3" required />
-        <br><br>
 
+        <input type='text' placeholder="Username" formControlName="username" name="userName" minlength="3" required />
+
+        <br><br>
         <input type="text" placeholder="First Name" formControlName="firstName" name="firstname" minlength="3"
             required />
-        <br><br>
 
+        <br><br>
         <input type="text" placeholder="Last Name" formControlName="lastName" name="lastname" minlength="1" required />
-        <br><br>
 
+        <br><br>
         <input type="email" placeholder="Email" formControlName="email" name="email" required
             pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+
+        <br><br>
+        <input [type]="show ? 'text' : 'password'" placeholder="Password" formControlName="password" name="password"
+            minlength="6" required />
+        <mat-icon (click)="togglePwdVisibility()" class="pwd-toggler">remove_red_eye</mat-icon>
         <br><br>
 
-        <input type='password' placeholder="Password" formControlName="password" name="password" minlength="6"
-            required />
-        <br><br>
-
-        <button color="primary" type="submit">Submit</button>
-        <br>
+        <button class="submit-btn" type="submit">Submit</button>
     </form>
 </div>

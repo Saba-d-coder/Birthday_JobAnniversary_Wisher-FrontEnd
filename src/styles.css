@@ -60,6 +60,10 @@ hr {
 
 /* ==== Login/Signup Form Styles ==== */
 
+.mat-ink-bar {
+  background-color: rgb(248, 153, 169) !important;
+}
+
 .auth-form {
   padding: 1em;
 }
@@ -70,16 +74,28 @@ hr {
   width: 60%;
 }
 
-.auth-form button {
+.auth-form mat-icon {
+  position: relative;
+  right: 8%;
+  margin: 2px;
+  vertical-align: middle;
+}
+
+.auth-form mat-icon:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.auth-form .submit-btn {
   font-size: 16px;
   padding: 3px;
 }
 
-.auth-form button:disabled {
+.auth-form .submit-btn:disabled {
   cursor: not-allowed;
 }
 
-.auth-form button:enabled:hover {
+.auth-form .submit-btn:enabled:hover {
   cursor: pointer;
   background-color: rgb(252, 180, 204);
   border: none;
