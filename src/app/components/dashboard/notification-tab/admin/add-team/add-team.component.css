@@ -1,6 +1,11 @@
-.request-form button:hover:enabled {
+.team-form button:hover:enabled {
   cursor: pointer;
   color: white;
   background-color: black;
   border-color: black;
+}
+
+input,
+textarea {
+  width: 90%;
 }

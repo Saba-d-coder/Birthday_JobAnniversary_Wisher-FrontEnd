@@ -13,10 +13,7 @@
     <!-- #region Iterating over team list -->
     <div *ngFor="let team of teamList" class="teams">
       <mat-accordion>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <!-- #region Panel Header -->
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -27,9 +24,7 @@
           <!-- #endregion -->
           <hr />
           <!-- // checking if teams has members or not by checking for teamID key -->
-          <ng-container
-            *ngIf="teams?.hasOwnProperty(team.teamID); else noMembers"
-          >
+          <ng-container *ngIf="teams?.hasOwnProperty(team.teamID); else noMembers">
             <!-- #region Team Members Display -->
             <div class="table-container">
               <table>
@@ -39,28 +34,16 @@
                   <th>Remove from team</th>
                 </thead>
                 <tbody>
-                  <tr
-                    *ngFor="let member of getMembers(team.teamID)"
-                    class="team-members"
-                  >
+                  <tr *ngFor="let member of getMembers(team.teamID)" class="team-members">
                     <td>{{ member.firstName }} {{ member.lastName }}</td>
                     <td>{{ member.email }}</td>
                     <td>
-                      <mat-icon
-                        class="remove-btn"
-                        (click)="
+                      <mat-icon class="remove-btn" (click)="
                           member.userID == currentUser
                             ? null
-                            : removeFromTeam(member.userID)
-                        "
-                        [classList]="
-                          member.userID == currentUser
-                            ? 'disabledBtn'
-                            : 'enabledBtn'
-                        "
-                      >
-                        delete</mat-icon
-                      >
+                            : removeFromTeam(member.userID)"
+                        [classList]="member.userID == currentUser? 'disabledBtn': 'enabledBtn'">
+                        delete</mat-icon>
                     </td>
                   </tr>
                 </tbody>
@@ -73,7 +56,7 @@
             <p id="no-member-message">No Members in Team</p>
           </ng-template>
           <br />
-          <button (click)="deleteTeam(team)">Delete Team</button>
+          <button (click)="deleteTeam(team)" class="btn">Delete Team</button>
         </mat-expansion-panel>
       </mat-accordion>
       <br />

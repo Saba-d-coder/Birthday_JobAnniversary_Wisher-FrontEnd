@@ -104,8 +104,6 @@ export class TeamControlsComponent implements OnInit {
   }
 
   deleteTeam(team: any) {
-    var confirmation: boolean = false;
-
     const dialogRef = this.dialog.open(ConfirmTeamDeleteComponent, {
       height: '40%',
       width: '30%',

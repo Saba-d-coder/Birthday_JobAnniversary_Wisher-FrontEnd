@@ -19,7 +19,8 @@
 }
 
 .table-container {
-  height: 200px;
+  height: max-content;
+  max-height: 200px;
   overflow-y: scroll;
 }
 
@@ -58,4 +59,11 @@ td:nth-child(3) {
 .enabledBtn:hover {
   color: coral;
   cursor: pointer !important;
+}
+
+.teams .btn:hover {
+  cursor: pointer;
+  color: white;
+  background-color: black;
+  border-color: black;
 }
