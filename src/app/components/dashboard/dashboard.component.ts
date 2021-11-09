@@ -77,7 +77,7 @@ export class DashboardComponent implements OnInit {
       width: '30%',
     });
     dialogRef.afterClosed().subscribe((data) => {
-      if (data.reload == true) {
+      if (data?.reload == true) {
         this.ngOnInit();
       }
     });
@@ -173,8 +173,8 @@ export class DashboardComponent implements OnInit {
       width: '30%',
     });
     dialogRef.afterClosed().subscribe((data) => {
-      if (data.reload === true) {
-        this.ngOnInit();
+      if (data?.reload === true) {
+        window.location.reload();
       }
     });
   }

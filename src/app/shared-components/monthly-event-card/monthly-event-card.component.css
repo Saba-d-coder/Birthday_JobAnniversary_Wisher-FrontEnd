@@ -1,0 +1,7 @@
+.event-card {
+  width: 100%;
+}
+
+mat-icon {
+  vertical-align: sub;
+}

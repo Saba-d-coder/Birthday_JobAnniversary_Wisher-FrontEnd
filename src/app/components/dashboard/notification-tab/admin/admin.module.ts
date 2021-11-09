@@ -8,12 +8,14 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmTeamDeleteComponent } from './confirm-team-delete/confirm-team-delete.component';
+import { MonthlyEventsComponent } from './monthly-events/monthly-events.component';
 
 @NgModule({
   declarations: [
     AddTeamComponent,
     TeamControlsComponent,
     ConfirmTeamDeleteComponent,
+    MonthlyEventsComponent,
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,11 @@ import { ConfirmTeamDeleteComponent } from './confirm-team-delete/confirm-team-d
     MatExpansionModule,
     ReactiveFormsModule,
   ],
-  exports: [CommonModule, AddTeamComponent, TeamControlsComponent],
+  exports: [
+    CommonModule,
+    AddTeamComponent,
+    TeamControlsComponent,
+    MonthlyEventsComponent,
+  ],
 })
 export class AdminModule {}

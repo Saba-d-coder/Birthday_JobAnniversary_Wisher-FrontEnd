@@ -13,6 +13,7 @@ import {
 import { EventCardComponent } from './event-card/event-card.component';
 import { EmailWishesComponent } from './email-wishes/email-wishes.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MonthlyEventCardComponent } from './monthly-event-card/monthly-event-card.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     EventCardComponent,
     RequestCardComponent,
     EmailWishesComponent,
+    MonthlyEventCardComponent,
   ],
   imports: [
     CommonModule,
@@ -35,6 +37,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     EventCardComponent,
     EmailWishesComponent,
     RequestCardComponent,
+    MonthlyEventCardComponent,
   ],
   providers: [
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: true } },

@@ -1,25 +1,14 @@
-<mat-tab-group
-  [(selectedIndex)]="index"
-  class="header-less-tabs"
-  animationDuration="0ms"
-  name="index"
->
+<mat-tab-group [(selectedIndex)]="index" class="header-less-tabs" animationDuration="0ms" name="index">
   <!-- #region tab components -->
   <mat-tab>
     <ng-template matTabContent>
-      <app-event-notification
-        [index]="index"
-        (eventsLength)="emitEventLengthsToSideNav($event)"
-      >
+      <app-event-notification [index]="index" (eventsLength)="emitEventLengthsToSideNav($event)">
       </app-event-notification>
     </ng-template>
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-event-notification
-        [index]="index"
-        (eventsLength)="emitEventLengthsToSideNav($event)"
-      >
+      <app-event-notification [index]="index" (eventsLength)="emitEventLengthsToSideNav($event)">
       </app-event-notification>
     </ng-template>
   </mat-tab>
@@ -30,21 +19,20 @@
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-requests-notification
-        [requests]="userRequests"
-        [adminRequest]="false"
-      >
+      <app-requests-notification [requests]="userRequests" [adminRequest]="false">
       </app-requests-notification>
     </ng-template>
   </mat-tab>
   <mat-tab>
     <ng-template matTabContent>
-      <app-requests-notification
-        [requests]="adminRequests"
-        [adminRequest]="true"
-        (adminRequestsLength)="emitAdminRequestsLengthToSideNav($event)"
-      >
+      <app-requests-notification [requests]="adminRequests" [adminRequest]="true"
+        (adminRequestsLength)="emitAdminRequestsLengthToSideNav($event)">
       </app-requests-notification>
+    </ng-template>
+  </mat-tab>
+  <mat-tab>
+    <ng-template matTabContent>
+      <app-monthly-events></app-monthly-events>
     </ng-template>
   </mat-tab>
   <mat-tab>

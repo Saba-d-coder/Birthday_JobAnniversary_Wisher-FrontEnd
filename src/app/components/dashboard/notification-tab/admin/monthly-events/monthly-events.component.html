@@ -1,0 +1,53 @@
+<div *ngIf='loading else showEvents'>
+    <mat-spinner class="spinner"></mat-spinner>
+</div>
+
+
+<ng-template #showEvents>
+
+    <div *ngIf='sending else show'>
+        <h1 class="no-events-message">Sending invites. Please wait.....</h1>
+        <mat-spinner class="spinner"></mat-spinner>
+    </div>
+    <ng-template #show>
+        <div class="events-container">
+            <br>
+            <div *ngIf='birthdays.length==0 && anniversaries.length==0 else elseBlock'>
+                <h1 class="no-events-message">No events to show</h1>
+            </div>
+
+            <ng-template #elseBlock>
+                <!-- <span class="invite-btn"><button>Send Monthly Celebration Invite</button></span> -->
+
+                <div *ngIf='birthdays.length!=0'>
+                    <h2 class="event-title">Upcoming Birthdays</h2>
+                    <!-- #region birthday events cards -->
+                    <div class="event-cards">
+                        <div *ngFor="let birthday of birthdays">
+                            <app-monthly-event-card [notification]=birthday [birthday]='true'></app-monthly-event-card>
+                            <br>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                </div>
+                <br>
+                <div *ngIf='anniversaries.length!=0'>
+                    <h2 class="event-title">Upcoming Job Anniversaries</h2>
+                    <!-- #region anniversary events card -->
+                    <div class="event-cards">
+                        <div *ngFor="let anniversary of anniversaries">
+                            <app-monthly-event-card [notification]=anniversary [anniversary]='true'>
+                            </app-monthly-event-card>
+                            <br>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                </div>
+                <button class="invite-btn" (click)="sendInvite()">Send Monthly Celebration Invite</button>
+
+            </ng-template>
+
+        </div>
+
+    </ng-template>
+</ng-template>

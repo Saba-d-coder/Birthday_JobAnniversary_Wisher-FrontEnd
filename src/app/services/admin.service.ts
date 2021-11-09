@@ -50,6 +50,24 @@ export class AdminService {
     });
   }
 
+  getAllMonthlyEvents(): Observable<any> {
+    this.userService.updateCurrentUser();
+    return this.http.get('/api/admin/inMonthEvents', {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.userService.currentUser?.token,
+      }),
+    });
+  }
+
+  sendEmailInvite(): Observable<any> {
+    this.userService.updateCurrentUser();
+    return this.http.post('/api/admin/celebrationInvites', null, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.userService.currentUser?.token,
+      }),
+    });
+  }
+
   removeTeamMember(id: number): Observable<any> {
     this.userService.updateCurrentUser();
     var url: string = 'api/admin/users/removeFromTeam';
