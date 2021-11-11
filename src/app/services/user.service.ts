@@ -13,8 +13,7 @@ export class UserService {
   isLoggedIn: boolean = false;
 
   constructor(private http: HttpClient) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-    this.loginStatus = JSON.parse(localStorage.getItem('loginStatus') || '{}');
+    this.updateCurrentUser();
   }
 
   updateCurrentUser(): void {
