@@ -17,11 +17,6 @@ export class UserService {
     this.loginStatus = JSON.parse(localStorage.getItem('loginStatus') || '{}');
   }
 
-  // authToken: string =
-  //   //wrong 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJLUiiCJleHAiOjE2MzU5MzEyODUsImlhdCI6MTYzNTg0NDg4NX0.tSstxTkcThcoMrJWobL6BqPw4zglmvp-1Wey-cn-rHg';
-  //   //expired 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJLU0siLCJleHAiOjE2MzU5MzEyODUsImlhdCI6MTYzNTg0NDg4NX0.tSstxTkcThcoMrJWobL6BqPw4zglmvp-1Wey-cn-rHg';
-  //   'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJLU0siLCJleHAiOjE2MzYwMjE3MTAsImlhdCI6MTYzNTkzNTMxMH0.ce2mu2WC19_qTfapfR8JzQ9ReS63qIVlGCNVQ4ExQRs';
-
   updateCurrentUser(): void {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
     this.loginStatus = JSON.parse(localStorage.getItem('loginStatus') || '{}');
