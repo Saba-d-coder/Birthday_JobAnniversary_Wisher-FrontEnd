@@ -72,7 +72,7 @@ export class UserService {
     });
   }
 
-  sendEventWishes(to: number, data: FormData) {
+  sendEventWishes(to: number, data: FormData): Observable<any> {
     this.updateCurrentUser();
     return this.http.post('/api/users/' + to + '/wish', data, {
       headers: new HttpHeaders({
@@ -81,7 +81,7 @@ export class UserService {
     });
   }
 
-  logout() {
+  logout(): Observable<any> {
     this.updateCurrentUser();
     return this.http.post('/api/logout', {
       headers: new HttpHeaders({

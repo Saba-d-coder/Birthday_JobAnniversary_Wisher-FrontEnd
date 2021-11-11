@@ -10,7 +10,7 @@ import { UserService } from './user.service';
 export class TeamService {
   constructor(private http: HttpClient, private userService: UserService) {}
 
-  getTeamMembers() {
+  getTeamMembers(): Observable<any> {
     this.userService.updateCurrentUser();
     return this.http
       .get(
@@ -45,7 +45,7 @@ export class TeamService {
       );
   }
 
-  getUpcomingEvents() {
+  getUpcomingEvents(): Observable<any> {
     this.userService.updateCurrentUser();
     return this.http
       .get(
@@ -65,7 +65,7 @@ export class TeamService {
       );
   }
 
-  getAllTeams() {
+  getAllTeams(): Observable<any> {
     this.userService.updateCurrentUser();
     return this.http
       .get('/api/teams', {
@@ -80,7 +80,7 @@ export class TeamService {
       );
   }
 
-  getAllTeamsData() {
+  getAllTeamsData(): Observable<any> {
     this.userService.updateCurrentUser();
     return this.http
       .get('/api/teams/data', {
@@ -95,7 +95,7 @@ export class TeamService {
       );
   }
 
-  requestToJoinTeam(userID: number, teamID: number) {
+  requestToJoinTeam(userID: number, teamID: number): Observable<any> {
     this.userService.updateCurrentUser();
     return this.http.post(
       '/api/users/' + userID + '/teamChangeRequest/' + teamID,
