@@ -4,7 +4,6 @@
 
 UI for [Birthday and Job Anniversary Wisher Application](https://github.com/Saba-d-coder/Birthday_JobAnniversary_Wisher-Backend.git)
 
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.9.
 
 ## Development server
