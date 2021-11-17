@@ -1,4 +1,4 @@
-# BdayJobAnniversaryWisher
+# Birthday and Job Anniversary Wisher Application
 
 ## Angular
 
